@@ -5,5 +5,5 @@
 
 ## Running
 ```sh
-zig build run
+  zig build run
 ```
