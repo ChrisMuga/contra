@@ -5,5 +5,9 @@
 
 ## Running
 ```sh
+  # Build and run
   zig build run
+
+  # Run build after building
+  make run
 ```
