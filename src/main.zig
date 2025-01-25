@@ -22,5 +22,8 @@ pub fn main() !void {
     // - This could be in a parser function
     for (buffer.slice()) |item| {
         print("{c}", .{item});
+        if (item == '\n') {
+            print("{s}\n", .{"new-line"});
+        }
     }
 }
