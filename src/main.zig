@@ -1,8 +1,26 @@
-pub fn main() !void {
-    std.debug.print("All your {s} are belong to us.\n", .{"codebase"});
-}
-
 const std = @import("std");
 
-/// This imports the separate module containing `root.zig`. Take a look in `build.zig` for details.
-const lib = @import("contra_lib");
+const print = std.debug.print;
+
+pub fn main() !void {
+    const file: std.fs.File = std.fs.cwd().openFile("input.txt", .{}) catch |err| {
+        print("Error: Could not access the file ({s})", .{@errorName(err)});
+        std.process.exit(1);
+    };
+
+    defer file.close();
+
+    const reader = file.reader();
+
+    var buffer: std.BoundedArray(u8, 4068) = .{};
+
+    reader.streamUntilDelimiter(buffer.writer(), '~', null) catch |err| {
+        if (std.mem.eql(u8, @errorName(err), "EndOfStream")) {}
+    };
+
+    // TODO: Look for \n delimiter and create new "row"
+    // - This could be in a parser function
+    for (buffer.slice()) |item| {
+        print("{c}", .{item});
+    }
+}
