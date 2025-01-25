@@ -24,6 +24,7 @@ pub fn main() !void {
         print("{c}", .{item});
         if (item == '\n') {
             print("{s}\n", .{"new-line"});
+            // TODO: Create a new []u8 record to store in a larger array to denote "new-item"
         }
     }
 }
