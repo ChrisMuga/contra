@@ -31,5 +31,5 @@ pub fn main() !void {
         }
     }
 
-    print("Inputs: {}", .{counter});
+    print("Inputs: {}\n", .{counter});
 }
