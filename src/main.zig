@@ -20,12 +20,15 @@ pub fn main() !void {
 
     var counter: u8 = 0;
 
+    var inputs: std.BoundedArray(u8, 4068) = .{};
+
     // TODO: Look for \n delimiter and create new "row"
     // - This could be in a parser function
     for (buffer.slice()) |item| {
         print("{c}", .{item});
         if (item == '\n') {
             print("{s}\n", .{"new-line"});
+            try inputs.append(item);
             counter += 1;
             // TODO: Create a new []u8 record to store in a larger array to denote "new-item"
         }
