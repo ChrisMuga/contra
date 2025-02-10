@@ -20,19 +20,26 @@ pub fn main() !void {
 
     var counter: u8 = 0;
 
-    var inputs: std.BoundedArray(u8, 4068) = .{};
+    var items: std.BoundedArray(u8, 4068) = .{};
 
     // TODO: Look for \n delimiter and create new "row"
     // - This could be in a parser function
+    // var buff =
     for (buffer.slice()) |item| {
-        print("{c}", .{item});
+        print("{} ", .{item});
         if (item == '\n') {
             print("{s}\n", .{"new-line"});
-            try inputs.append(item);
             counter += 1;
             // TODO: Create a new []u8 record to store in a larger array to denote "new-item"
+        } else {
+            try items.append(item);
+            // try items.insert(counter, item.slice(counter));
         }
     }
+
+    // for (items.slice()) |item| {
+    //     print("~~~~~~~~~~~~~> {c}\n", .{item});
+    // }
 
     print("Inputs: {}\n", .{counter});
 }

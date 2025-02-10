@@ -1,5 +1,5 @@
 .zig-cache/
-/bin/*
+bin/*
 zig-out/
 /release/
 /debug/

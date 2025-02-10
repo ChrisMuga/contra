@@ -17,4 +17,11 @@ int main(){
 	}
 
 	fclose(file);
+
+	int d = 0;
+
+	while(d < c){
+		printf("%s--->\n", input[d]);
+		d = d + 1;
+	}
 }
