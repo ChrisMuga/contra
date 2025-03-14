@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+
+// Work on memory allocation using malloc or alloc
+
 int main(){
 	FILE *file = fopen("input.txt", "r");
 
