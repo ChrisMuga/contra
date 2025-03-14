@@ -1,3 +1,5 @@
+// TODO: Work on manual memory management 
+
 const std = @import("std");
 
 const print = std.debug.print;
