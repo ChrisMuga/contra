@@ -11,7 +11,7 @@
   # Run build after building
   make run
 
-  # Run C
+  # Build C
   make build-c
 
   # Run C
