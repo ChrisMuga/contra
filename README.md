@@ -10,4 +10,10 @@
 
   # Run build after building
   make run
+
+  # Run C
+  make build-c
+
+  # Run C
+  make run-c
 ```
