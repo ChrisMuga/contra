@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 
-// Work on memory allocation using malloc or alloc
+// TODO: Work on memory allocation using malloc or alloc
+// TODO: Investigate SegFault
 
 int main(){
 	FILE *file = fopen("input.txt", "r");
