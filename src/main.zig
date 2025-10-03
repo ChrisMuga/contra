@@ -2,7 +2,6 @@ const std = @import("std");
 
 const fs = std.fs;
 const print = std.debug.print;
-const assert = std.debug.assert;
 
 pub fn main() !void {
     const cwd = fs.cwd();
