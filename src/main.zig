@@ -12,6 +12,7 @@ pub fn main() !void {
         var gpa = std.heap.GeneralPurposeAllocator(.{}){};
         const allocator = gpa.allocator();
 
+        // TODO: Stream the file and parse it line by line, using separator \n
         const contents = try file.reader().readAllAlloc(allocator, stat.size+1);
 
         print("{s}", .{contents});
