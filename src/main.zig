@@ -3,6 +3,13 @@ const std = @import("std");
 const fs = std.fs;
 const print = std.debug.print;
 
+// Implementation:
+// Use a buffer of size 2048 bytes
+// While reading the contents of the file's stream:
+// - Every character is put into the buffer
+// - if We run into a \n, we close the buffer and print its contents
+// - When we reach the end of the stream, we cleanup the buffer and exit the program
+
 pub fn main() !void {
     const cwd = fs.cwd();
 
