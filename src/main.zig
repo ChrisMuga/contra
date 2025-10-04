@@ -1,7 +1,7 @@
 const std = @import("std");
 
-const fs = std.fs;
 const print = std.debug.print;
+const fs = std.fs;
 
 // Implementation:
 // Use a buffer of size 2048 bytes
@@ -11,22 +11,29 @@ const print = std.debug.print;
 // - When we reach the end of the stream, we cleanup the buffer and exit the program
 
 pub fn main() !void {
+    var buffer: [2048]u8 = undefined;
+
     const cwd = fs.cwd();
+    if(cwd.openFile("input.txt", .{})) |file| {
+        var i: u8 = 0;
 
-    if(cwd.openFile("input.txt", fs.File.OpenFlags{ })) |file| {
-        const stat = try file.stat();
+        while(true) {
+            const x = try file.reader().readUntilDelimiterOrEof(&buffer, '\n');
 
-        var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-        const allocator = gpa.allocator();
+            if(x) |y|{
+                print("{d}:\t", .{i});
+                for(0..y.len) |c| {
+                    print("{c}", .{buffer[c]});
+                }
 
-        // TODO: Stream the file and parse it line by line, using separator \n
-        const contents = try file.reader().readAllAlloc(allocator, stat.size+1);
+                print("\n", .{});
+            }else {
+                break;
+            }
 
-        print("{s}", .{contents});
-
-        // Clean up: Close file
-        file.close();
-    } else |e| {
-        print("Error opening file: {!}", .{e});
+            i += 1;
+        }
+    }else |_| {
+        print("Cannot open file", .{});
     }
 }
