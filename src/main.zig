@@ -34,6 +34,6 @@ pub fn main() !void {
             i += 1;
         }
     }else |_| {
-        print("Cannot open file", .{});
+        print("Error: Cannot locate/open file\n", .{});
     }
 }
