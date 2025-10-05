@@ -15,40 +15,52 @@ const fs = std.fs;
 //      - if We run into a \n, we close the buffer and print its contents
 //      - When we reach the end of the stream, we cleanup the buffer and exit the program
 
+// TODO: Move this to a public namespace
+fn echo(val: []const u8) void {
+    print("{s}\n", .{val});
+}
+
 pub fn main() !void {
     var args = std.process.args();
 
     var argsBuffer: [10][]const u8 = undefined;
 
-    var j:u8 = 0;
+    var j: u8 = 0;
 
     // TODO: Why do we have to do this to get the first N items in the args iterator?
+    // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
         argsBuffer[j] = x;
         j += 1;
     }
 
-    const fileName = argsBuffer[1];
-    var buffer: [2048]u8 = undefined;
+    if(j < 2){
+        echo("Please specify file name");
+        return;
+    }
 
+    const fileName = argsBuffer[1];
+    
+    var buffer: [2048]u8 = undefined;
+    
     const cwd = fs.cwd();
     if (cwd.openFile(fileName, .{})) |file| {
         var i: u8 = 0;
-
+    
         while (true) {
             const x = try file.reader().readUntilDelimiterOrEof(&buffer, '\n');
-
+    
             if (x) |y| {
                 print("{d}:\t", .{i});
                 for (0..y.len) |c| {
                     print("{c}", .{buffer[c]});
                 }
-
+    
                 print("\n", .{});
             } else {
                 break;
             }
-
+    
             i += 1;
         }
     } else |_| {
