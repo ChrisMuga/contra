@@ -13,3 +13,6 @@ run-c:
 	@ ./bin/alt
 format:
 	@ zig fmt ./
+show-docs:
+	@ zig build-lib -femit-docs src/main.zig
+	@ python3 -m http.server 8000 -d docs/
