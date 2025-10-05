@@ -1,4 +1,5 @@
 const std = @import("std");
+const utils = @import("utils.zig");
 
 const print = std.debug.print;
 const fs = std.fs;
@@ -15,10 +16,6 @@ const fs = std.fs;
 //      - if We run into a \n, we close the buffer and print its contents
 //      - When we reach the end of the stream, we cleanup the buffer and exit the program
 
-// TODO: Move this to a public namespace
-fn echo(val: []const u8) void {
-    print("{s}\n", .{val});
-}
 
 pub fn main() !void {
     var args = std.process.args();
@@ -35,7 +32,7 @@ pub fn main() !void {
     }
 
     if(j < 2){
-        echo("Please specify file name");
+        utils.echo("Please specify file name");
         return;
     }
 
