@@ -16,7 +16,6 @@ const fs = std.fs;
 //      - if We run into a \n, we close the buffer and print its contents
 //      - When we reach the end of the stream, we cleanup the buffer and exit the program
 
-
 pub fn main() !void {
     var args = std.process.args();
 
@@ -31,33 +30,33 @@ pub fn main() !void {
         j += 1;
     }
 
-    if(j < 2){
+    if (j < 2) {
         utils.echo("Please specify file name");
         return;
     }
 
     const fileName = argsBuffer[1];
-    
+
     var buffer: [2048]u8 = undefined;
-    
+
     const cwd = fs.cwd();
     if (cwd.openFile(fileName, .{})) |file| {
         var i: u8 = 0;
-    
+
         while (true) {
             const x = try file.reader().readUntilDelimiterOrEof(&buffer, '\n');
-    
+
             if (x) |y| {
                 print("{d}:\t", .{i});
                 for (0..y.len) |c| {
                     print("{c}", .{buffer[c]});
                 }
-    
+
                 print("\n", .{});
             } else {
                 break;
             }
-    
+
             i += 1;
         }
     } else |_| {
