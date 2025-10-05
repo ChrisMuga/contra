@@ -7,8 +7,6 @@ const fs = std.fs;
 /// Task:
 /// =====================
 ///      - Take a file as command line input and print its output/contents
-
-
 /// Implementation:
 /// =====================
 ///      Use a buffer of size 2048 bytes
@@ -16,7 +14,6 @@ const fs = std.fs;
 ///      - Every character is put into the buffer
 ///      - if We run into a \n, we close the buffer and print its contents
 ///      - When we reach the end of the stream, we cleanup the buffer and exit the program
-
 pub fn main() !void {
     var args = std.process.args();
 
@@ -43,6 +40,12 @@ pub fn main() !void {
     const cwd = fs.cwd();
     if (cwd.openFile(fileName, .{})) |file| {
         var i: u8 = 0;
+
+        const stat = try file.stat();
+        if (stat.kind != std.fs.File.Kind.file) {
+            print("Error: {s} is not a file\n", .{fileName});
+            return;
+        }
 
         while (true) {
             const x = try file.reader().readUntilDelimiterOrEof(&buffer, '\n');
