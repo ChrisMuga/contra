@@ -60,6 +60,6 @@ pub fn main() !void {
             i += 1;
         }
     } else |_| {
-        print("Error: Cannot locate/open file\n", .{});
+        utils.echo("Error: Cannot locate/open file");
     }
 }
