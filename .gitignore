@@ -1,5 +1,7 @@
 .zig-cache/
 bin/*
+docs/*
+libmain.a*
 *.zon
 zig-out/
 /release/
