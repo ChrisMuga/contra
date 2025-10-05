@@ -11,21 +11,14 @@ int main(){
 		return printf("Error!\n");
 	}
 
-	char input[10][3000];
+	char input[2048][3000];
 
-	int c = 0;
+	int i = 0;
 
-	while(fgets(input[c], 3000, file)){
-		printf("%d -> %s", (c+1), input[c]);
-		c = c+ 1;
+	while(fgets(input[i], 3000, file)){
+		printf("%d:\t%s", (i+1), input[i]);
+		i = i+ 1;
 	}
 
 	fclose(file);
-
-	int d = 0;
-
-	while(d < c){
-		printf("%s--->\n", input[d]);
-		d = d + 1;
-	}
 }
