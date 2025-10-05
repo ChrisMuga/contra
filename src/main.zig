@@ -14,26 +14,26 @@ pub fn main() !void {
     var buffer: [2048]u8 = undefined;
 
     const cwd = fs.cwd();
-    if(cwd.openFile("input.txt", .{})) |file| {
+    if (cwd.openFile("input.txt", .{})) |file| {
         var i: u8 = 0;
 
-        while(true) {
+        while (true) {
             const x = try file.reader().readUntilDelimiterOrEof(&buffer, '\n');
 
-            if(x) |y|{
+            if (x) |y| {
                 print("{d}:\t", .{i});
-                for(0..y.len) |c| {
+                for (0..y.len) |c| {
                     print("{c}", .{buffer[c]});
                 }
 
                 print("\n", .{});
-            }else {
+            } else {
                 break;
             }
 
             i += 1;
         }
-    }else |_| {
+    } else |_| {
         print("Error: Cannot locate/open file\n", .{});
     }
 }
