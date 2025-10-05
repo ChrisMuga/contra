@@ -7,7 +7,6 @@ const fs = std.fs;
 // =====================
 //      - Take a file as command line input and print its output/contents
 
-
 // Implementation:
 // =====================
 //      Use a buffer of size 2048 bytes
@@ -17,10 +16,23 @@ const fs = std.fs;
 //      - When we reach the end of the stream, we cleanup the buffer and exit the program
 
 pub fn main() !void {
+    var args = std.process.args();
+
+    var argsBuffer: [10][]const u8 = undefined;
+
+    var j:u8 = 0;
+
+    // TODO: Why do we have to do this to get the first N items in the args iterator?
+    while (args.next()) |x| {
+        argsBuffer[j] = x;
+        j += 1;
+    }
+
+    const fileName = argsBuffer[1];
     var buffer: [2048]u8 = undefined;
 
     const cwd = fs.cwd();
-    if (cwd.openFile("input.txt", .{})) |file| {
+    if (cwd.openFile(fileName, .{})) |file| {
         var i: u8 = 0;
 
         while (true) {
