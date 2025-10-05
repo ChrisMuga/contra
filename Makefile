@@ -9,5 +9,4 @@ build-run-c:
 	@ make build-c
 	@ ./bin/alt
 run-c:
-	@ make build-c
 	@ ./bin/alt
