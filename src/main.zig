@@ -7,6 +7,7 @@ const fs = std.fs;
 /// Task:
 /// =====================
 ///      - Take a file as command line input and print its output/contents
+///      - Input must be a file and not, say, a directory
 /// Implementation:
 /// =====================
 ///      Use a buffer of size 2048 bytes
