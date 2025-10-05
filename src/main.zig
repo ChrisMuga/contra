@@ -3,12 +3,18 @@ const std = @import("std");
 const print = std.debug.print;
 const fs = std.fs;
 
+// Task:
+// =====================
+//      - Take a file as command line input and print its output/contents
+
+
 // Implementation:
-// Use a buffer of size 2048 bytes
-// While reading the contents of the file's stream:
-// - Every character is put into the buffer
-// - if We run into a \n, we close the buffer and print its contents
-// - When we reach the end of the stream, we cleanup the buffer and exit the program
+// =====================
+//      Use a buffer of size 2048 bytes
+//      While reading the contents of the file's stream:
+//      - Every character is put into the buffer
+//      - if We run into a \n, we close the buffer and print its contents
+//      - When we reach the end of the stream, we cleanup the buffer and exit the program
 
 pub fn main() !void {
     var buffer: [2048]u8 = undefined;
