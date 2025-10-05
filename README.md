@@ -6,6 +6,8 @@
 ## Running
 ```sh
   # Build and run
+  make
+  # OR
   zig build run
 
   # Run build after building
