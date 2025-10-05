@@ -10,3 +10,5 @@ build-run-c:
 	@ ./bin/alt
 run-c:
 	@ ./bin/alt
+format:
+	@ zig fmt ./
