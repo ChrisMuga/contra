@@ -4,14 +4,12 @@ const utils = @import("utils.zig");
 const print = std.debug.print;
 const fs = std.fs;
 
-/// Task:
-/// =====================
+/// # Task:
 ///      - Take a file as command line input and print its output/contents
 ///      - Input must be a file and not, say, a directory
-/// Implementation:
-/// =====================
-///      Use a buffer of size 2048 bytes
-///      While reading the contents of the file's stream:
+/// ## Implementation:
+///      - Use a buffer of size 2048 bytes
+///      - While reading the contents of the file's stream:
 ///      - Every character is put into the buffer
 ///      - if We run into a \n, we close the buffer and print its contents
 ///      - When we reach the end of the stream, we cleanup the buffer and exit the program
@@ -67,4 +65,7 @@ pub fn main() !void {
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
     }
+
+    // TODO: Cleanup, but how can we do this better?
+    buffer = undefined;
 }
