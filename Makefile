@@ -1,5 +1,5 @@
 build-run:
-	@ make build run
+	@ make build run -s
 build:
 	@ zig build
 run:
