@@ -1,7 +1,7 @@
 # Contra
 
 ## Spec
-> Running on `zig v0.14.0-dev.2851+b074fb7dd`
+> Running on `zig v0.16.0-dev.683+60a332406`
 
 ## Running
 ```sh
