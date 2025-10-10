@@ -56,7 +56,10 @@ pub fn main() !void {
         // TODO: Implement line numbering
         var y: usize = 0;
         for (buffer) |c| {
-            if (y == offset) break;
+            if (y >= offset - 1) {
+                print("\n", .{});
+                break;
+            }
 
             print("{c}", .{c});
             y += 1;
