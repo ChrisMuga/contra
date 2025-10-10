@@ -57,9 +57,9 @@ pub fn main() !void {
 
         var y: usize = 0;
         for (buffer) |c| {
-            newLine = c == 2;
+            newLine = c == '\n';
             if (newLine) {
-                print("-", .{});
+                print("\n", .{});
             }
             if (y == offset) break;
 
