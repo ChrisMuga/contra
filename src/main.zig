@@ -53,14 +53,9 @@ pub fn main() !void {
             print("{any}", .{err});
         }
 
-        var newLine = true;
-
+        // TODO: Implement line numbering
         var y: usize = 0;
         for (buffer) |c| {
-            newLine = c == '\n';
-            if (newLine) {
-                print("\n", .{});
-            }
             if (y == offset) break;
 
             print("{c}", .{c});
