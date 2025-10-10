@@ -38,29 +38,33 @@ pub fn main() !void {
 
     const cwd = fs.cwd();
     if (cwd.openFile(fileName, .{})) |file| {
-        var i: u8 = 0;
-
         const stat = try file.stat();
         if (stat.kind != std.fs.File.Kind.file) {
             print("Error: {s} is not a file\n", .{fileName});
             return;
         }
 
-        while (true) {
-            const x = try file.reader().readUntilDelimiterOrEof(&buffer, '\n');
+        var reader = file.reader(&buffer);
 
-            if (x) |y| {
-                print("{d}:\t", .{i});
-                for (0..y.len) |c| {
-                    print("{c}", .{buffer[c]});
-                }
+        var offset: usize = 0;
+        if (reader.readStreaming(&buffer)) |x| {
+            offset = x;
+        } else |err| {
+            print("{any}", .{err});
+        }
 
-                print("\n", .{});
-            } else {
-                break;
+        var newLine = true;
+
+        var y: usize = 0;
+        for (buffer) |c| {
+            newLine = c == 2;
+            if (newLine) {
+                print("-", .{});
             }
+            if (y == offset) break;
 
-            i += 1;
+            print("{c}", .{c});
+            y += 1;
         }
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
