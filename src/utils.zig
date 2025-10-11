@@ -5,5 +5,5 @@ const std = @import("std");
 /// ## Example usage:
 /// - echo("Hello World");
 pub fn echo(val: []const u8) void {
-    std.debug.print("{any}\n", .{val});
+    std.debug.print("{s}\n", .{val});
 }
