@@ -53,12 +53,23 @@ pub fn main() !void {
             print("{any}", .{err});
         }
 
-        // TODO: Implement line numbering
         var y: usize = 0;
+        var lineNo: u8 = 1;
+
         for (buffer) |c| {
             if (y >= offset - 1) {
                 print("\n", .{});
                 break;
+            }
+
+            if (y == 0) {
+                print("{d} \t", .{lineNo});
+                lineNo += 1;
+            } else {
+                if (buffer[y - 1] == '\n') {
+                    print("{d} \t", .{lineNo});
+                    lineNo += 1;
+                }
             }
 
             print("{c}", .{c});
