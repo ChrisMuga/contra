@@ -3,7 +3,7 @@ build-run:
 build:
 	@ zig build
 run:
-	@ ./zig-out/bin/contra input.txt
+	@ ./zig-out/bin/contra samples/input.txt
 build-c:
 	@ gcc -o bin/alt src/main.c
 build-run-c:
