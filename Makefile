@@ -5,9 +5,9 @@ build:
 run:
 	@ ./zig-out/bin/contra samples/input.txt
 build-c:
-	@ gcc -o bin/alt src/main.c
+	@ gcc -o bin/contra src/main.c
 run-c:
-	@ ./bin/alt
+	@ ./bin/contra
 format:
 	@ zig fmt ./
 show-docs:
