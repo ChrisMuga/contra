@@ -36,6 +36,7 @@ pub fn main() !void {
 
     // TODO: This buffer will not work for larger files
     //  - Use an allocator to get memory from the heap
+    //  - Use ./samples/1mb.....[.txt] to test this
     var buffer: [2048]u8 = undefined;
 
     const cwd = fs.cwd();
