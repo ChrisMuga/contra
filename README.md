@@ -21,3 +21,6 @@
   # Run C
   make run-c
 ```
+
+### Samples
+> Example files can be found [here](https://examplefile.com/text/txt/1-mb-txt)
