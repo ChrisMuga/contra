@@ -2,7 +2,7 @@
 
 
 // TODO: Work on memory allocation using malloc or alloc
-// TODO: Get positional arguments from flags, on main
+// TODO: Get positional arguments from command-line, on main
 // 		- Use that to pass file path
 int main(){
 	FILE *file = fopen("./samples/1mb-examplefile-com.txt", "r");
