@@ -34,6 +34,8 @@ pub fn main() !void {
 
     const fileName = argsBuffer[1];
 
+    // TODO: This buffer will not work for larger files
+    //  - Use an allocator to get memory from the heap
     var buffer: [2048]u8 = undefined;
 
     const cwd = fs.cwd();
