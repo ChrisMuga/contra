@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO: Work on memory allocation using malloc or alloc
-// TODO: Get positional arguments from command-line, on main
-// 		- Use that to pass file path
+// TODO: Explain line for line to understand what's going on here...
 int main(int argc, char* argv[]){
 	
 	if(argc <= 1) {
@@ -19,7 +17,6 @@ int main(int argc, char* argv[]){
 		return printf("Error!\n");
 	}
 
-	// TODO: Explain line for line to understand what's going on here...
 	// Get file size
 	fseek(file, 0L, SEEK_END);
 	long size = ftell(file);
