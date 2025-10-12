@@ -14,7 +14,7 @@ int main(int argc, char* argv[]){
 	FILE *file = fopen(filename, "r");
 
 	if (file == NULL){
-		return printf("Error!\n");
+		return printf("Error: Could not open file\n");
 	}
 
 	// Get file size
