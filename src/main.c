@@ -4,9 +4,16 @@
 // TODO: Work on memory allocation using malloc or alloc
 // TODO: Get positional arguments from command-line, on main
 // 		- Use that to pass file path
-int main(){
-	FILE *file = fopen("./samples/1mb-examplefile-com.txt", "r");
-	// FILE *file = fopen("./samples/input.txt", "r");
+int main(int argc, char* argv[]){
+	
+	if(argc <= 1) {
+		printf("Error: Please specify the input file\n");
+		return 0;
+	}
+
+	char* filename = argv[1];
+
+	FILE *file = fopen(filename, "r");
 
 	if (file == NULL){
 		return printf("Error!\n");
