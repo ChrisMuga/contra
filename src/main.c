@@ -3,7 +3,6 @@
 
 // TODO: Explain line for line to understand what's going on here...
 int main(int argc, char* argv[]){
-	
 	if(argc <= 1) {
 		printf("Error: Please specify the input file\n");
 		return 0;
