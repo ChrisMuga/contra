@@ -7,7 +7,7 @@ run:
 build-c:
 	@ gcc -o bin/contra src/main.c
 run-c:
-	@ ./bin/contra
+	@ ./bin/contra samples/input.txt
 format:
 	@ zig fmt ./
 show-docs:
