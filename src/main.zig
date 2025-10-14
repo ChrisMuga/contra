@@ -33,11 +33,6 @@ pub fn main() !void {
 
     const fileName = argsBuffer[1];
 
-    // TODO: This buffer will not work for larger files
-    //  - Use an allocator to get memory from the heap
-    //  - Use ./samples/1mb.....[.txt] to test this
-    var buffer: [2048]u8 = undefined;
-
     const cwd = fs.cwd();
     if (cwd.openFile(fileName, .{})) |file| {
         const stat = try file.stat();
@@ -46,17 +41,26 @@ pub fn main() !void {
             return;
         }
 
-        var reader = file.reader(&buffer);
+        const size = stat.size;
+
+        var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
+        defer arena.deinit();
+
+        const allocator = arena.allocator();
+
+        const buffer = try allocator.alloc(u8, size);
+        print("Size: {d} bytes\n-------\n", .{size});
+        var reader = file.reader(buffer);
 
         var offset: usize = 0;
-        if (reader.readStreaming(&buffer)) |x| {
+        if (reader.readStreaming(buffer)) |x| {
             offset = x;
         } else |err| {
             print("{any}", .{err});
         }
 
         var y: usize = 0;
-        var lineNo: u8 = 1;
+        var lineNo: u64 = 1;
 
         for (buffer) |c| {
             if (y >= offset - 1) {
@@ -82,5 +86,5 @@ pub fn main() !void {
     }
 
     // TODO: Cleanup, but how can we do this better?
-    buffer = undefined;
+    // buffer = undefined;
 }
