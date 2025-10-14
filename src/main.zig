@@ -7,13 +7,8 @@ const fs = std.fs;
 /// # Task:
 ///      - Take a file as command line input and print its output/contents
 ///      - Input must be a file and not, say, a directory
-/// TODO: Implementation details should change here using memory allocation
 /// ## Implementation:
-///      - Use a buffer of size 2048 bytes
-///      - While reading the contents of the file's stream:
-///      - Every character is put into the buffer
-///      - if We run into a \n, we close the buffer and print its contents
-///      - When we reach the end of the stream, we cleanup the buffer and exit the program
+/// TODO: Implementation details should change here using memory allocation
 pub fn main() !void {
     var args = std.process.args();
 
