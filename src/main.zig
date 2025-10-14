@@ -9,6 +9,9 @@ const fs = std.fs;
 ///      - Input must be a file and not, say, a directory
 /// ## Implementation:
 /// TODO: Implementation details should change here using memory allocation
+///     - We might have to use an Arena allocator or a fixed buffer allocator
+///     - We might also want to get the size of the file in order to know how much memory we need to read the whole file
+///     - The memory retrieved from file.stat() will be used in the allocator(s)
 pub fn main() !void {
     var args = std.process.args();
 
