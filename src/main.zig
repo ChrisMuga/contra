@@ -9,9 +9,13 @@ const fs = std.fs;
 ///      - Input must be a file and not, say, a directory
 /// ## Implementation:
 /// TODO: Implementation details should change here using memory allocation
-///     - We might have to use an Arena allocator or a fixed buffer allocator
-///     - We might also want to get the size of the file in order to know how much memory we need to read the whole file
-///     - The memory retrieved from file.stat() will be used in the allocator(s)
+///     - Use an arena allocator to create a buffer.
+///     - Use that buffer to read the file specified.
+///     - Obtain the file size in order to know how much buffer memory we need to read the whole file
+///     - Parse the file while streaming, if we run into a '\n' character; we use that to denote line numbers
+///     - Prepend line number at the beginning of every line, which means we initialize our line numbers at 1.
+///     - Deintialize the arena on function close
+///     - Free the buffer memory on function close
 pub fn main() !void {
     var args = std.process.args();
 
