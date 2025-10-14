@@ -7,8 +7,8 @@ const fs = std.fs;
 /// # Task:
 ///      - Take a file as command line input and print its output/contents
 ///      - Input must be a file and not, say, a directory
+///      - Show line numbers
 /// ## Implementation:
-/// TODO: Implementation details should change here using memory allocation
 ///     - Use an arena allocator to create a buffer.
 ///     - Use that buffer to read the file specified.
 ///     - Obtain the file size in order to know how much buffer memory we need to read the whole file
