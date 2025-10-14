@@ -23,7 +23,7 @@ pub fn main() !void {
 
     var j: u8 = 0;
 
-    // TODO: Why do we have to do this to get the first N items in the args iterator?
+    // We only need args[1] here so we'll exit the loop early.
     // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
         if (j > 1) {
