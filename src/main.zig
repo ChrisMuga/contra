@@ -50,6 +50,7 @@ pub fn main() !void {
 
         const buffer = try allocator.alloc(u8, size);
         defer allocator.free(buffer);
+
         print("Size: {d} bytes\n-------\n", .{size});
         var reader = file.reader(buffer);
 
