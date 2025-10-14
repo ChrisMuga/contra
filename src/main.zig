@@ -26,14 +26,16 @@ pub fn main() !void {
     // We only need args[1] here so we'll exit the loop early.
     // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
-        if (j > 1) {
-            return;
-        }
         argsBuffer[j] = x;
+
+        if (j == 1) {
+            break;
+        }
+
         j += 1;
     }
 
-    if (j < 2) {
+    if (j < 1) {
         utils.echo("Please specify file name");
         return;
     }
