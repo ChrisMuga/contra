@@ -86,7 +86,4 @@ pub fn main() !void {
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
     }
-
-    // TODO: Cleanup, but how can we do this better?
-    // buffer = undefined;
 }
