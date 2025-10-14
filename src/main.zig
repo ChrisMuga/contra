@@ -26,6 +26,9 @@ pub fn main() !void {
     // TODO: Why do we have to do this to get the first N items in the args iterator?
     // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
+        if (j > 1) {
+            return;
+        }
         argsBuffer[j] = x;
         j += 1;
     }
