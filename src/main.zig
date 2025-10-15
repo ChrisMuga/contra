@@ -19,14 +19,14 @@ const fs = std.fs;
 pub fn main() !void {
     var args = std.process.args();
 
-    var argsBuffer: [10][]const u8 = undefined;
+    var args_buffer: [10][]const u8 = undefined;
 
     var j: u8 = 0;
 
     // We only need args[1] here so we'll exit the loop early.
     // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
-        argsBuffer[j] = x;
+        args_buffer[j] = x;
 
         if (j == 1) {
             break;
@@ -40,13 +40,13 @@ pub fn main() !void {
         return;
     }
 
-    const fileName = argsBuffer[1];
+    const file_name = args_buffer[1];
 
     const cwd = fs.cwd();
-    if (cwd.openFile(fileName, .{})) |file| {
+    if (cwd.openFile(file_name, .{})) |file| {
         const stat = try file.stat();
         if (stat.kind != std.fs.File.Kind.file) {
-            print("Error: {s} is not a file\n", .{fileName});
+            print("Error: {s} is not a file\n", .{file_name});
             return;
         }
 
@@ -60,7 +60,6 @@ pub fn main() !void {
         const buffer = try allocator.alloc(u8, size);
         defer allocator.free(buffer);
 
-        print("Size: {d} bytes\n-------\n", .{size});
         var reader = file.reader(buffer);
 
         var offset: usize = 0;
@@ -71,7 +70,7 @@ pub fn main() !void {
         }
 
         var y: usize = 0;
-        var lineNo: u64 = 1;
+        var line_no: u64 = 1;
 
         for (buffer) |c| {
             if (y >= offset - 1) {
@@ -80,18 +79,20 @@ pub fn main() !void {
             }
 
             if (y == 0) {
-                print("{d} \t", .{lineNo});
-                lineNo += 1;
+                print("{d} \t", .{line_no});
+                line_no += 1;
             } else {
                 if (buffer[y - 1] == '\n') {
-                    print("{d} \t", .{lineNo});
-                    lineNo += 1;
+                    print("{d} \t", .{line_no});
+                    line_no += 1;
                 }
             }
 
             print("{c}", .{c});
             y += 1;
         }
+        utils.echo("-------");
+        print("Size: {d} bytes\n-------\n", .{size});
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
     }
