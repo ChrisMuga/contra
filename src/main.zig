@@ -19,6 +19,8 @@ const fs = std.fs;
 
 
 /// TODO: Implement piping e.g. `git log | contra`
+/// TODO: Show only line number, e.g `contra src/main.zig :14`
+/// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
 pub fn main() !void {
     var args = std.process.args();
 
