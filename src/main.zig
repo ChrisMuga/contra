@@ -16,8 +16,12 @@ const fs = std.fs;
 ///     - Prepend line number at the beginning of every line, which means we initialize our line numbers at 1.
 ///     - Deintialize the arena on function close
 ///     - Free the buffer memory on function close
+/// ## Examples:
+///     - ./zig-out/bin/contra example.txt // To print the whole file
+///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only 
+
+
 /// TODO: Implement piping e.g. `git log | contra`
-/// TODO: Show only line number, e.g `contra src/main.zig :14`
 /// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
 pub fn main() !void {
     var args = std.process.args();

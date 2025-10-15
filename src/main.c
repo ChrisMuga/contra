@@ -3,8 +3,13 @@
 
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Explain line for line to understand what's going on here...
-/// TODO: Show only line number, e.g `contra src/main.zig 14`
-/// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
+// TODO: Show only line number, e.g `contra src/main.zig 14`
+// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
+
+
+// ## Examples:
+//     - ./bin/contra example.txt // To print the whole file
+//     - ./bin/contra example.txt 14 // To print line 14 only 
 int main(int argc, char* argv[]){
 	if(argc <= 1) {
 		printf("Error: Please specify the input file\n");
