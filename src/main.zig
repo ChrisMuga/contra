@@ -16,8 +16,6 @@ const fs = std.fs;
 ///     - Prepend line number at the beginning of every line, which means we initialize our line numbers at 1.
 ///     - Deintialize the arena on function close
 ///     - Free the buffer memory on function close
-
-
 /// TODO: Implement piping e.g. `git log | contra`
 /// TODO: Show only line number, e.g `contra src/main.zig :14`
 /// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
@@ -28,21 +26,24 @@ pub fn main() !void {
 
     var j: u8 = 0;
 
-    // We only need args[1] here so we'll exit the loop early.
+    // We only need args[1-2] here so we'll exit the loop early.
     // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
         args_buffer[j] = x;
+        j += 1;
 
-        if (j == 1) {
+        if (j == 3) {
             break;
         }
-
-        j += 1;
     }
+
+    var specified_line_number: ?u64 = null;
 
     if (j < 1) {
         utils.echo("Please specify file name");
         return;
+    } else if (j == 3) {
+        specified_line_number = try std.fmt.parseInt(u64, args_buffer[2], 10);
     }
 
     const file_name = args_buffer[1];
@@ -75,29 +76,30 @@ pub fn main() !void {
         }
 
         var y: usize = 0;
-        var line_no: u64 = 1;
+        var line_no: u64 = 0;
 
         for (buffer) |c| {
-            if (y >= offset - 1) {
-                print("\n", .{});
-                break;
-            }
-
-            if (y == 0) {
-                print("{d} \t", .{line_no});
+            if ((y == 0) or (buffer[y - 1] == '\n')) {
                 line_no += 1;
-            } else {
-                if (buffer[y - 1] == '\n') {
+                if (specified_line_number == null or specified_line_number == line_no) {
                     print("{d} \t", .{line_no});
-                    line_no += 1;
                 }
             }
 
-            print("{c}", .{c});
+            if (specified_line_number == null) {
+                print("{c}", .{c});
+            } else {
+                if (specified_line_number == line_no) {
+                    print("{c}", .{c});
+                }
+            }
+
             y += 1;
         }
+
         utils.echo("-------");
-        print("Size: {d} bytes\n-------\n", .{size});
+        print("Size: {d} bytes\n", .{size});
+        utils.echo("-------");
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
     }
