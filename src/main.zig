@@ -86,12 +86,8 @@ pub fn main() !void {
                 }
             }
 
-            if (specified_line_number == null) {
+            if (specified_line_number == null or specified_line_number == line_no) {
                 print("{c}", .{c});
-            } else {
-                if (specified_line_number == line_no) {
-                    print("{c}", .{c});
-                }
             }
 
             y += 1;
