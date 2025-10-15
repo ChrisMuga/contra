@@ -50,7 +50,9 @@ int main(int argc, char* argv[]){
 		if(line_number == -1) {
 			printf("%d: \t %s", i, buffer);
 		}else if(line_number == i){
-			printf("%d: \t %s", i, buffer);
+			printf("========\n");
+			printf("%d: %s", i, buffer);
+			printf("========\n");
 			break;
 		}
 
