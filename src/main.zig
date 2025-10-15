@@ -18,7 +18,6 @@ const fs = std.fs;
 ///     - Free the buffer memory on function close
 
 
-
 /// TODO: Implement piping e.g. `git log | contra`
 pub fn main() !void {
     var args = std.process.args();
