@@ -13,6 +13,12 @@ format:
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
 	@ python3 -m http.server 8000 -d docs/
+deploy:
+	@sudo echo "Copying binary"
+	@cp zig-out/bin/contra ~/bin/
+	@echo "Creating symlink"
+	@ln -sf ~/bin/contra /usr/local/bin/contra
+	@echo "Done ✅"
 deploy-c:
 	@sudo echo "Copying binary"
 	@cp bin/contra ~/bin/
