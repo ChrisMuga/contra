@@ -16,6 +16,10 @@ const fs = std.fs;
 ///     - Prepend line number at the beginning of every line, which means we initialize our line numbers at 1.
 ///     - Deintialize the arena on function close
 ///     - Free the buffer memory on function close
+
+
+
+/// TODO: Implement piping e.g. `git log | contra`
 pub fn main() !void {
     var args = std.process.args();
 
