@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// TODO: Implement piping e.g. `git log | contra`
 // TODO: Explain line for line to understand what's going on here...
 int main(int argc, char* argv[]){
 	if(argc <= 1) {
