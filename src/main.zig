@@ -96,6 +96,7 @@ pub fn main() !void {
 
             y += 1;
         }
+        print("\n", .{});
 
         if (specified_line_number == null) {
             utils.echo("-------");

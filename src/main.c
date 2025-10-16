@@ -63,6 +63,7 @@ int main(int argc, char* argv[]){
 
 		i = i+ 1;
 	}
+	printf("\n");
 
 	fclose(file);
 }
