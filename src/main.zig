@@ -96,10 +96,9 @@ pub fn main() !void {
 
             y += 1;
         }
-        print("\n", .{});
 
         if (specified_line_number == null) {
-            utils.echo("-------");
+            utils.echo("\n-------");
             print("Size: {d} bytes\n", .{file_size});
             utils.echo("-------");
         } else {
