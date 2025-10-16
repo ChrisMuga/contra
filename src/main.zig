@@ -22,6 +22,7 @@ const fs = std.fs;
 
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
+// TODO: If the specified_line_number < max_line_no: Exit and prompt
 pub fn main() !void {
     var args = std.process.args();
 
@@ -79,13 +80,13 @@ pub fn main() !void {
         var y: usize = 0;
         var line_no: u64 = 0;
 
-        if (specified_line_number != null) {
-            utils.echo("-------");
-        }
         for (buffer) |c| {
             if ((y == 0) or (buffer[y - 1] == '\n')) {
                 line_no += 1;
                 if (specified_line_number == null or specified_line_number == line_no) {
+                    if (specified_line_number == line_no) {
+                        utils.echo("-------");
+                    }
                     print("{d} \t", .{line_no});
                 }
             }
@@ -102,7 +103,11 @@ pub fn main() !void {
             print("Size: {d} bytes\n", .{file_size});
             utils.echo("-------");
         } else {
-            utils.echo("-------");
+            if (specified_line_number.? <= line_no) {
+                utils.echo("-------");
+            } else {
+                print("Cannot find line({d}). Max line number is {d}\n", .{ specified_line_number.?, line_no });
+            }
         }
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
