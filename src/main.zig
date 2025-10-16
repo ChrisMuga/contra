@@ -19,7 +19,6 @@ const fs = std.fs;
 /// ## Examples:
 ///     - ./zig-out/bin/contra example.txt // To print the whole file
 ///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
-
 /// TODO: Implementation broke with version bump to 0.16.0-dev.732+2f3234c76. Fix
 /// TODO: Implement piping e.g. `git log | contra`
 /// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
@@ -72,10 +71,8 @@ pub fn main() !void {
 
         var reader = file.reader(buffer);
 
-        var offset: usize = 0;
-        if (reader.readStreaming(buffer)) |x| {
-            offset = x;
-        } else |err| {
+        // TODO: There may be a better implementation here...
+        if (reader.interface.readSliceAll(buffer)) |_| {} else |err| {
             print("{any}", .{err});
         }
 
