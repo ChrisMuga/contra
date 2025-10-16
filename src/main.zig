@@ -58,14 +58,14 @@ pub fn main() !void {
             return;
         }
 
-        const size = stat.size;
+        const file_size = stat.size;
 
         var arena = std.heap.ArenaAllocator.init(std.heap.page_allocator);
         defer arena.deinit();
 
         const allocator = arena.allocator();
 
-        const buffer = try allocator.alloc(u8, size);
+        const buffer = try allocator.alloc(u8, file_size);
         defer allocator.free(buffer);
 
         var reader = file.reader(buffer);
@@ -100,7 +100,7 @@ pub fn main() !void {
 
         if (specified_line_number == null) {
             utils.echo("-------");
-            print("Size: {d} bytes\n", .{size});
+            print("Size: {d} bytes\n", .{file_size});
             utils.echo("-------");
         } else {
             utils.echo("-------");
