@@ -22,7 +22,6 @@ const fs = std.fs;
 
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
-// TODO: If the specified_line_number < max_line_no: Exit and prompt
 pub fn main() !void {
     var args = std.process.args();
 
