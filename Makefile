@@ -17,11 +17,11 @@ deploy:
 	@sudo echo "Copying binary"
 	@cp zig-out/bin/contra ~/bin/
 	@echo "Creating symlink"
-	@ln -sf ~/bin/contra /usr/local/bin/contra
+	@sudo ln -sf ~/bin/contra /usr/local/bin/contra
 	@echo "Done ✅"
 deploy-c:
 	@sudo echo "Copying binary"
 	@cp bin/contra ~/bin/
 	@echo "Creating symlink"
-	@ln -sf ~/bin/contra /usr/local/bin/contra
+	@sudo ln -sf ~/bin/contra /usr/local/bin/contra
 	@echo "Done ✅"
