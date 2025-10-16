@@ -19,6 +19,8 @@ const fs = std.fs;
 /// ## Examples:
 ///     - ./zig-out/bin/contra example.txt // To print the whole file
 ///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
+
+/// TODO: Implementation broke with version bump to 0.16.0-dev.732+2f3234c76. Fix
 /// TODO: Implement piping e.g. `git log | contra`
 /// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
 pub fn main() !void {
