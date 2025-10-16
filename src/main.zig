@@ -18,9 +18,7 @@ const fs = std.fs;
 ///     - Free the buffer memory on function close
 /// ## Examples:
 ///     - ./zig-out/bin/contra example.txt // To print the whole file
-///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only 
-
-
+///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
 /// TODO: Implement piping e.g. `git log | contra`
 /// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
 pub fn main() !void {
@@ -82,6 +80,9 @@ pub fn main() !void {
         var y: usize = 0;
         var line_no: u64 = 0;
 
+        if (specified_line_number != null) {
+            utils.echo("-------");
+        }
         for (buffer) |c| {
             if ((y == 0) or (buffer[y - 1] == '\n')) {
                 line_no += 1;
@@ -97,9 +98,13 @@ pub fn main() !void {
             y += 1;
         }
 
-        utils.echo("-------");
-        print("Size: {d} bytes\n", .{size});
-        utils.echo("-------");
+        if (specified_line_number == null) {
+            utils.echo("-------");
+            print("Size: {d} bytes\n", .{size});
+            utils.echo("-------");
+        } else {
+            utils.echo("-------");
+        }
     } else |_| {
         utils.echo("Error: Cannot locate/open file");
     }
