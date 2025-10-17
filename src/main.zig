@@ -8,6 +8,8 @@ const fs = std.fs;
 ///      - Take a file as command line input and print its output/contents
 ///      - Input must be a file and not, say, a directory
 ///      - Show line numbers
+///      - Print specific line numbers if specified e.g contra test.txt 40 - prints L40 only
+///      - Print specific range of line numbers if specified e.g contra test.txt 40-50 - prints L40-L50
 /// ## Implementation:
 ///     - Use an arena allocator to create a buffer.
 ///     - Use that buffer to read the file specified.
