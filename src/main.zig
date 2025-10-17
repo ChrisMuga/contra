@@ -22,7 +22,6 @@ const fs = std.fs;
 ///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
 
 // TODO: Implement piping e.g. `git log | contra`
-// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
 pub fn main() !void {
     var args = std.process.args();
 
