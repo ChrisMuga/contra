@@ -24,6 +24,7 @@ const fs = std.fs;
 ///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
 
 // TODO: Get started with tests
+// TODO: Script for debug and production/release builds
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Error handling in case:
 //  - contra test.txt e (if line specifier A is invalid)
