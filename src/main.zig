@@ -19,6 +19,7 @@ const fs = std.fs;
 /// ## Examples:
 ///     - ./zig-out/bin/contra example.txt // To print the whole file
 ///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
+///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
 
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
@@ -30,7 +31,6 @@ pub fn main() !void {
     var j: u8 = 0;
 
     // We only need args[1-2] here so we'll exit the loop early.
-    // NOTE: Iterators do not have a .len field
     while (args.next()) |x| {
         args_buffer[j] = x;
         j += 1;
@@ -40,13 +40,32 @@ pub fn main() !void {
         }
     }
 
-    var specified_line_number: ?u64 = null;
+    // Specified line number(s) - sln
+    var sln_a: ?u64 = null;
+    var sln_b: ?u64 = null;
 
     if (j < 1) {
         utils.echo("Please specify file name");
         return;
     } else if (j == 3) {
-        specified_line_number = try std.fmt.parseInt(u64, args_buffer[2], 10);
+        var range_split = std.mem.splitSequence(u8, args_buffer[2], ":");
+        var i: u8 = 0;
+        while (range_split.next()) |x| {
+            switch (i) {
+                0 => {
+                    sln_a = try std.fmt.parseInt(u64, x, 10);
+                },
+                1 => {
+                    sln_b = try std.fmt.parseInt(u64, x, 10);
+                },
+                else => {},
+            }
+            i += 1;
+        }
+    }
+
+    if (sln_a != null and sln_b != null) {
+        print("Showing L{d}-L{d}\n", .{ sln_a.?, sln_b.? });
     }
 
     const file_name = args_buffer[1];
@@ -82,30 +101,38 @@ pub fn main() !void {
         for (buffer) |c| {
             if ((y == 0) or (buffer[y - 1] == '\n')) {
                 line_no += 1;
-                if (specified_line_number == null or specified_line_number == line_no) {
-                    if (specified_line_number == line_no) {
+                if (sln_a == null or sln_a == line_no) {
+                    if (sln_a == line_no) {
                         utils.echo("-------");
                     }
                     print("{d} \t", .{line_no});
                 }
+
+                if (sln_b != null and sln_b.? >= line_no and line_no > sln_a.?) {
+                    print("{d} \t", .{line_no});
+                }
             }
 
-            if (specified_line_number == null or specified_line_number == line_no) {
+            if (sln_a == null or sln_a == line_no) {
+                print("{c}", .{c});
+            }
+
+            if (sln_b != null and (sln_b.? >= line_no and line_no > sln_a.?)) {
                 print("{c}", .{c});
             }
 
             y += 1;
         }
 
-        if (specified_line_number == null) {
+        if (sln_a == null) {
             utils.echo("\n-------");
             print("Size: {d} bytes\n", .{file_size});
             utils.echo("-------");
         } else {
-            if (specified_line_number.? <= line_no) {
+            if (sln_a.? <= line_no) {
                 utils.echo("-------");
             } else {
-                print("Cannot find line({d}). Max line number is {d}\n", .{ specified_line_number.?, line_no });
+                print("Cannot find line({d}). Max line number is {d}\n", .{ sln_a.?, line_no });
             }
         }
     } else |_| {
