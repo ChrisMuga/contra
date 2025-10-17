@@ -31,6 +31,7 @@ const fs = std.fs;
 //  - contra test.txt 50: (if line specifier B is not provided)
 //  - contra test.txt 50:e (if line specifier B is invalid)
 //  - contra test.txt 50-60 ("-" is an invalid delimiter)
+//  - contra test.txt 50kk-60sk (either of the specifiers are not non-zero numbers)
 pub fn main() !void {
     var args = std.process.args();
 
