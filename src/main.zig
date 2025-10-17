@@ -24,6 +24,10 @@ const fs = std.fs;
 ///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
 
 // TODO: Implement piping e.g. `git log | contra`
+// TODO: Error handling in case:
+//  - contra test.txt e (if line specifier A is invalid)
+//  - contra test.txt 50: (if line specifier B is not provided)
+//  - contra test.txt 50:e (if line specifier B is invalid)
 pub fn main() !void {
     var args = std.process.args();
 
