@@ -73,11 +73,12 @@ pub fn main() !void {
         }
     }
 
-    if (sln_a != null and sln_b != null) {
-        print("Showing L{d}-L{d}\n", .{ sln_a.?, sln_b.? });
-    }
-
     const file_name = args_buffer[1];
+
+    if (sln_a != null and sln_b != null) {
+        utils.echo("-------");
+        print("Showing L{d}-L{d} of {s}\n", .{ sln_a.?, sln_b.?, file_name });
+    }
 
     const cwd = fs.cwd();
     if (cwd.openFile(file_name, .{})) |file| {
