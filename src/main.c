@@ -5,6 +5,13 @@
 // TODO: Explain line for line to understand what's going on here...
 // TODO: Show only line number, e.g `contra src/main.zig 14`
 // TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
+// TODO: Script for debug and production/release builds
+// TODO: Error handling in case:
+//  - contra test.txt e (if line specifier A is invalid)
+//  - contra test.txt 50: (if line specifier B is not provided)
+//  - contra test.txt 50:e (if line specifier B is invalid)
+//  - contra test.txt 50-60 ("-" is an invalid delimiter)
+//  - contra test.txt 50kk-60sk (either of the specifiers are not non-zero numbers)
 
 
 // ## Examples:
