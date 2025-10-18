@@ -56,6 +56,7 @@ pub fn main() !void {
         utils.echo("Please specify file name");
         return;
     } else if (j == 3) {
+        utils.cls();
         var range_split = std.mem.splitSequence(u8, args_buffer[2], ":");
         var i: u8 = 0;
         while (range_split.next()) |x| {
