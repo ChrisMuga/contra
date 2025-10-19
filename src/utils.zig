@@ -13,6 +13,7 @@ pub fn cls() void {
 }
 
 pub const FLAG_HELP = "--help";
+pub const FLAG_ZEN = "--zen";
 
 /// isFlag checks the 1st command line args to see if it is prepended by "--"
 pub fn isFlag(val: []const u8) bool {
@@ -22,7 +23,9 @@ pub fn isFlag(val: []const u8) bool {
 pub fn handleFlag(flag: []const u8) void {
     if (std.mem.eql(u8, flag, FLAG_HELP)) {
         handleFlagHelp();
-    }else {
+    } else if (std.mem.eql(u8, flag, FLAG_ZEN)) {
+        handleFlagZen();
+    } else {
         std.debug.print("Error: {s} is not a flag\n", .{flag});
     }
 }
@@ -43,4 +46,10 @@ pub fn handleFlagHelp() void {
         \\  - Print specific range of line numbers if specified e.g contra test.txt 40-50 - prints L40-L50
         \\
     , .{});
+}
+
+pub fn handleFlagZen() void {
+    echo("******");
+    echo("Dust thou art - to dust returnest; was not spoken of the soul ;)");
+    echo("******");
 }
