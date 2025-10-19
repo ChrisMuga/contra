@@ -59,8 +59,11 @@ pub fn main() !void {
         return;
     } else if (j == 2) {
         const flag: []const u8 = args_buffer[1];
-        utils.handleFlag(flag);
-        return;
+
+        if (utils.isFlag(flag)) {
+            utils.handleFlag(flag);
+            return;
+        }
     } else if (j == 3) {
         utils.cls();
         var range_split = std.mem.splitSequence(u8, args_buffer[2], ":");

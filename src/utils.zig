@@ -14,6 +14,11 @@ pub fn cls() void {
 
 pub const FLAG_HELP = "--help";
 
+/// isFlag checks the 1st command line args to see if it is prepended by "--"
+pub fn isFlag(val: []const u8) bool {
+    return std.mem.eql(u8, "--", val[0..2]);
+}
+
 pub fn handleFlag(flag: []const u8) void {
     if (std.mem.eql(u8, flag, FLAG_HELP)) {
         handleFlagHelp();
