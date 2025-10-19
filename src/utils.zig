@@ -53,7 +53,5 @@ pub fn handleFlagHelp() void {
 }
 
 pub fn handleFlagZen() void {
-    echo("******");
-    echo("Dust thou art - to dust returnest; was not spoken of the soul ;)");
-    echo("******");
+    echo("\"Dust thou art - to dust returnest; was not spoken of the soul\" ;)");
 }
