@@ -37,7 +37,6 @@ pub fn handleFlagHelp() void {
         \\ contra file.txt
         \\ contra file.txt 40 (prints L40 only)
         \\ contra file.txt 40:50 (prints L40-L50)
-        \\ contra --help (shows help)
         \\ -----
         \\  - Take a file as command line input and print its output/contents
         \\  - Input must be a file and not, say, a directory
