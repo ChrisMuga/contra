@@ -58,6 +58,7 @@ pub fn main() !void {
         utils.echo("Please specify file name");
         return;
     } else if (j == 2) {
+        // Check and handle early if we run into a flag
         const flag: []const u8 = args_buffer[1];
 
         if (utils.isFlag(flag)) {
