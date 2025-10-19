@@ -11,3 +11,5 @@ pub fn echo(val: []const u8) void {
 pub fn cls() void {
     std.debug.print("\x1B[2J\x1B[H", .{});
 }
+
+pub const FLAG_HELP = "--help";

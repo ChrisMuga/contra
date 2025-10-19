@@ -18,7 +18,7 @@ const fs = std.fs;
 ///     - Prepend line number at the beginning of every line, which means we initialize our line numbers at 1.
 ///     - Deintialize the arena on function close
 ///     - Free the buffer memory on function close
-/// ## Examples:
+/// ### Examples:
 ///     - ./zig-out/bin/contra example.txt // To print the whole file
 ///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
 ///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
@@ -57,6 +57,12 @@ pub fn main() !void {
     if (j < 1) {
         utils.echo("Please specify file name");
         return;
+    } else if (j == 2) {
+        const flag: []const u8 = args_buffer[1];
+        if (std.mem.eql(u8, flag, utils.FLAG_HELP)) {
+            utils.echo(flag);
+        }
+        return;
     } else if (j == 3) {
         utils.cls();
         var range_split = std.mem.splitSequence(u8, args_buffer[2], ":");
@@ -80,7 +86,7 @@ pub fn main() !void {
     if (sln_a != null and sln_b != null) {
         utils.echo("-------");
         print("Showing L{d}-L{d} of {s}\n", .{ sln_a.?, sln_b.?, file_name });
-    }else if(sln_a != null and sln_b == null){
+    } else if (sln_a != null and sln_b == null) {
         utils.echo("-------");
         print("Showing {s}:{d}\n", .{ file_name, sln_a.? });
     }
