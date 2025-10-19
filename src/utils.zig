@@ -32,7 +32,7 @@ pub fn handleFlag(flag: []const u8) void {
 
 pub fn handleFlagHelp() void {
     std.debug.print(
-        \\ Usage: contra [file|args]
+        \\ Usage: contra [file | args]
         \\ -----
         \\ contra file.txt
         \\ contra file.txt 40 (prints L40 only)
