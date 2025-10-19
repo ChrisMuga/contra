@@ -44,6 +44,10 @@ pub fn handleFlagHelp() void {
         \\  - Show line numbers
         \\  - Print specific line numbers if specified e.g contra test.txt 40 - prints L40 only
         \\  - Print specific range of line numbers if specified e.g contra test.txt 40-50 - prints L40-L50
+        \\ -----
+        \\ args:
+        \\ --help                 shows help manual/documentation
+        \\ --zen                  shows zen
         \\
     , .{});
 }
