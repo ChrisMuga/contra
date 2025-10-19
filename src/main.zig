@@ -41,7 +41,6 @@ pub fn main() !void {
     const global_allocator = std.heap.page_allocator;
     var args = try std.process.argsWithAllocator(global_allocator);
 
-
     var args_buffer: [10][]const u8 = undefined;
 
     var j: u8 = 0;
