@@ -55,8 +55,8 @@ pub fn main() !void {
     var sln_a: ?u64 = null;
     var sln_b: ?u64 = null;
 
-    if (j < 1) {
-        utils.echo("Please specify file name");
+    if (j <= 1) {
+        utils.echo("Error: Not enough arguments. Provide file name/path. See contra --help for more");
         return;
     } else if (j == 2) {
         // Check and handle early if we run into a flag
@@ -85,10 +85,6 @@ pub fn main() !void {
     }
 
     const file_name = args_buffer[1];
-    if (file_name.len == 0){
-        utils.echo("Error: Not enough arguments. Provide file name/path. See contra --help for more");
-        return;
-    }
 
     if (sln_a != null and sln_b != null) {
         utils.echo("-------");
