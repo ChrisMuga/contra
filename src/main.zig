@@ -85,6 +85,10 @@ pub fn main() !void {
     }
 
     const file_name = args_buffer[1];
+    if (file_name.len == 0){
+        utils.echo("Error: Not enough arguments. Provide file name/path. See contra --help for more");
+        return;
+    }
 
     if (sln_a != null and sln_b != null) {
         utils.echo("-------");
