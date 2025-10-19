@@ -26,7 +26,7 @@ pub fn handleFlag(flag: []const u8) void {
     } else if (std.mem.eql(u8, flag, FLAG_ZEN)) {
         handleFlagZen();
     } else {
-        std.debug.print("Error: {s} is not a flag\n", .{flag});
+        std.debug.print("Error: {s} is not a valid argument\n", .{flag});
     }
 }
 
