@@ -35,8 +35,12 @@ const fs = std.fs;
 //  - contra test.txt 50-60 ("-" is an invalid delimiter)
 //  - contra test.txt 50kk-60sk (either of the specifiers are not non-zero numbers)
 pub fn main() !void {
+    // var args = std.process.args(); // Works on POSIX only, not windows
+    //  - the implementation below should work for both.
+    //  - TODO: Confirm
     const global_allocator = std.heap.page_allocator;
     var args = try std.process.argsWithAllocator(global_allocator);
+
 
     var args_buffer: [10][]const u8 = undefined;
 
