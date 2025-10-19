@@ -22,6 +22,8 @@ pub fn isFlag(val: []const u8) bool {
 pub fn handleFlag(flag: []const u8) void {
     if (std.mem.eql(u8, flag, FLAG_HELP)) {
         handleFlagHelp();
+    }else {
+        std.debug.print("Error: {s} is not a flag\n", .{flag});
     }
 }
 
