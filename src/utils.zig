@@ -13,3 +13,27 @@ pub fn cls() void {
 }
 
 pub const FLAG_HELP = "--help";
+
+pub fn handleFlag(flag: []const u8) void {
+    if (std.mem.eql(u8, flag, FLAG_HELP)) {
+        handleFlagHelp();
+    }
+}
+
+pub fn handleFlagHelp() void {
+    std.debug.print(
+        \\ Usage: contra [file|args]
+        \\ -----
+        \\ contra file.txt
+        \\ contra file.txt 40 (prints L40 only)
+        \\ contra file.txt 40:50 (prints L40-L50)
+        \\ contra --help (shows help)
+        \\ -----
+        \\  - Take a file as command line input and print its output/contents
+        \\  - Input must be a file and not, say, a directory
+        \\  - Show line numbers
+        \\  - Print specific line numbers if specified e.g contra test.txt 40 - prints L40 only
+        \\  - Print specific range of line numbers if specified e.g contra test.txt 40-50 - prints L40-L50
+        \\
+    , .{});
+}

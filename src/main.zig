@@ -59,9 +59,7 @@ pub fn main() !void {
         return;
     } else if (j == 2) {
         const flag: []const u8 = args_buffer[1];
-        if (std.mem.eql(u8, flag, utils.FLAG_HELP)) {
-            utils.echo(flag);
-        }
+        utils.handleFlag(flag);
         return;
     } else if (j == 3) {
         utils.cls();
