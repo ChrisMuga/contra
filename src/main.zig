@@ -30,7 +30,6 @@ const fs = std.fs;
 // TODO: Look into semver - semantic versioning
 // TODO: Error handling in case:
 //  - contra test.txt e (if line specifier A is invalid)
-//  - contra test.txt 50: (if line specifier B is not provided)
 //  - contra test.txt 50:e (if line specifier B is invalid)
 //  - contra test.txt 50-60 ("-" is an invalid delimiter)
 //  - contra test.txt 50kk-60sk (either of the specifiers are not non-zero numbers)
@@ -80,7 +79,9 @@ pub fn main() !void {
                     sln_a = try std.fmt.parseInt(u64, x, 10);
                 },
                 1 => {
-                    sln_b = try std.fmt.parseInt(u64, x, 10);
+                    if(x.len > 0){
+                        sln_b = try std.fmt.parseInt(u64, x, 10);
+                    }
                 },
                 else => {},
             }
