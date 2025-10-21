@@ -3,6 +3,9 @@
 
 #include "utils.h"
 
+// NOTE: This C program can automatically pipe to nvim for example. Investigate
+// 	- The zig program cannot do this out of the box
+
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Explain line for line to understand what's going on here...
 // TODO: Show only line number, e.g `contra src/main.zig 14`
