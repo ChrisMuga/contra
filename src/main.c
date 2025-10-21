@@ -57,11 +57,15 @@ int main(int argc, char* argv[]){
 		range = argv[2];
 	}
 
-	if(range != NULL && sln_a != -1) {
+	if(range != NULL) {
 		int* x = split_range(range);
 
-		sln_a = x[0];
-		sln_b = x[1];
+		if(x[0] != 0){
+			sln_a = x[0];
+		}
+		if(x[1] != 0){
+			sln_b = x[1];
+		}
 	}
 
 	FILE *file = fopen(file_name, "r");
