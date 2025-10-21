@@ -8,6 +8,9 @@ build-c:
 	@ gcc -o bin/contra src/main.c
 run-c:
 	@ ./bin/contra samples/input.txt
+dry-c:
+	@ make build-c
+	@ ./bin/contra samples/input.txt 40:44
 format:
 	@ zig fmt ./
 show-docs:
