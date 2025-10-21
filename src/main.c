@@ -38,17 +38,19 @@ int main(int argc, char* argv[]){
 	char* file_name = argv[1];
 
 	if(has_char(file_name, ':')){
-		char** x = split(file_name, ':');
+		char** split_vars = split(file_name, ':');
 
-		file_name = x[0];
+		file_name = split_vars[0];
 
-		if(x[1] != NULL){
-			sln_a  = atoi(x[1]);
+		if(split_vars[1] != NULL){
+			sln_a  = atoi(split_vars[1]);
 		}
 
-		if(x[2] != NULL) {
-			sln_b  = atoi(x[2]);
+		if(split_vars[2] != NULL) {
+			sln_b  = atoi(split_vars[2]);
 		}
+
+		free(split_vars);
 	}
 
 	if(argc > 1) {
