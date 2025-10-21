@@ -7,6 +7,35 @@ void echo(char val[]){
 }
 
 // TODO: Documentation
+char** split(char* string, char delimiter) {
+	char** res = (char**)malloc(strlen(string)+1);
+	char* buffer = (char*)malloc(strlen(string)+1);
+	int b = 0;
+	int count = 0;
+
+	for(int i =0; i < strlen(string); i++){
+		if(string[i] == delimiter) {
+			res[count] = buffer;
+			buffer = (char*)malloc(strlen(string));		
+			b = 0;
+			count++;
+			continue;
+		}else{
+			buffer[b] = string[i];
+			b++;
+		}
+	}
+
+	if(strlen(buffer) > 0){
+		printf("---> %s\n", buffer);
+		printf("---* %s\n", res[0]);
+		res[count] = buffer;
+		buffer = (char*)malloc(strlen(string));
+	}
+	return res;
+}
+
+// TODO: Documentation
 int* split_range(char range[]) {
 	// TODO; Is there a way to know the length of char[] without string.h?
 	static int x[2];
@@ -29,4 +58,14 @@ int* split_range(char range[]) {
 	x[1] = atoi(buffer);
 
 	return x;
+}
+
+int has_char(char haystack[], char needle){
+	for(int i= 0; i < strlen(haystack); i++){
+		if(haystack[i] == needle){
+			return 1;
+		}
+	}
+
+	return 0;
 }
