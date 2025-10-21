@@ -41,11 +41,13 @@ int* split_range(char range[]) {
 	static char buffer[] = "";
 
 	int c = 0;
+	int y = 0;
 
 	for(int i = 0; i < strlen(range); i++) {
 		if(range[i] == ':'){
 			x[0] = atoi(buffer);
 			c = 0;
+			y += 1;
 			continue;
 		}else{
 			buffer[c] = range[i];
@@ -53,7 +55,7 @@ int* split_range(char range[]) {
 		}
 	}
 
-	x[1] = atoi(buffer);
+	x[y] = atoi(buffer);
 
 	return x;
 }
