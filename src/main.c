@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "utils.h"
+
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Explain line for line to understand what's going on here...
 // TODO: Show only line number, e.g `contra src/main.zig 14`
@@ -25,17 +27,21 @@ int main(int argc, char* argv[]){
 		return 0;
 	}
 
-	char* number;
-	int line_number = -1;
+	char* range;
+	int sln_a = -1;
+	int sln_b = -1;
 
 	char* filename = argv[1];
 
 	if(argc > 1) {
-		number = argv[2];
+		range = argv[2];
 	}
 
-	if(number != NULL) {
-		line_number = atoi(number);
+	if(range != NULL) {
+		int* x = split_range(range);
+
+		sln_a = x[0];
+		sln_b = x[1];
 	}
 
 	FILE *file = fopen(filename, "r");
@@ -48,7 +54,7 @@ int main(int argc, char* argv[]){
 	fseek(file, 0L, SEEK_END);
 	long size = ftell(file);
 
-	if(line_number == -1) {
+	if(sln_a == -1) {
 		printf("File size: %ld\n", size);
 	}
 
@@ -60,10 +66,17 @@ int main(int argc, char* argv[]){
 
 	int i = 1;
 
+	if(sln_a < sln_b){
+		printf("Printing L%d-L%d of %s\n", sln_a, sln_b, filename);
+		echo("--------------------");
+	}
 	while(fgets(buffer, size+1, file)){
-		if(line_number == -1) {
+		if(sln_a == -1) {
 			printf("%d: \t %s", i, buffer);
-		}else if(line_number == i){
+		}else if(sln_a < sln_b && i >= sln_a && i <= sln_b) {
+			printf("%d: \t %s", i, buffer);
+		}
+		else if(sln_a == i){
 			printf("========\n");
 			printf("%d: %s", i, buffer);
 			printf("========\n");
@@ -71,6 +84,9 @@ int main(int argc, char* argv[]){
 		}
 
 		i = i+ 1;
+	}
+	if(sln_a < sln_b){
+		echo("--------------------");
 	}
 	printf("\n");
 
