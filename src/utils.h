@@ -27,8 +27,6 @@ char** split(char* string, char delimiter) {
 	}
 
 	if(strlen(buffer) > 0){
-		printf("---> %s\n", buffer);
-		printf("---* %s\n", res[0]);
 		res[count] = buffer;
 		buffer = (char*)malloc(strlen(string));
 	}
