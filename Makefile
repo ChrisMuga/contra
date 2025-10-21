@@ -8,6 +8,7 @@ build-c:
 	@ gcc -o bin/contra src/main.c
 run-c:
 	@ ./bin/contra samples/input.txt
+# Dry run C build
 dry-c:
 	@ make build-c
 	@ ./bin/contra samples/input.txt 30:34
