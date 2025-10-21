@@ -11,7 +11,7 @@ run-c:
 # Dry run C build
 dry-c:
 	@ make build-c
-	@ ./bin/contra samples/input.txt 30:34
+	@ ./bin/contra samples/input.txt 37:38
 format:
 	@ zig fmt ./
 show-docs:
