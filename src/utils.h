@@ -61,3 +61,27 @@ int has_char(char haystack[], char needle){
 
 	return 0;
 }
+// TODO: Not too sure about this algorithm/impementation but it seems to be working on majority test cases; Revisit.
+int contains(char* string, char* sub_string) {
+	int i = 0;
+	int j = 0;
+
+	int contiguous_count = 0;
+
+	while(i < strlen(string)) {
+		if(string[i] == sub_string[j]) {
+			contiguous_count++;
+			j++;
+		}else{
+			if(contiguous_count >= strlen(sub_string)){
+				return TRUE;
+			}
+			contiguous_count = 0;
+			j = 0;
+		}
+
+		i++;
+	}
+
+	return (contiguous_count == strlen(sub_string));
+}
