@@ -28,6 +28,8 @@ const fs = std.fs;
 // TODO: contra --version
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Look into semver - semantic versioning
+// TODO: contra test.txt:10
+// TODO: contra test.txt:10:20
 // TODO: Error handling in case:
 //  - contra test.txt e (if line specifier A is invalid)
 //  - contra test.txt 50:e (if line specifier B is invalid)
