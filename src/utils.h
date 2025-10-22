@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+static int TRUE 	= 1;
+static int FALSE 	= 0;
 void echo(char val[]){
 	printf("%s\n", val);
 }
