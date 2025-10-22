@@ -14,6 +14,10 @@ dry-c:
 	@ ./bin/contra samples/input.txt 37:38
 format:
 	@ zig fmt ./
+format-c:
+	@ echo "Formatting C files in src/"
+	@ clang-format ./src/* -i
+	@ echo "Done"
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
 	@ python3 -m http.server 8000 -d docs/
