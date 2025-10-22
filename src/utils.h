@@ -85,3 +85,6 @@ int contains(char* string, char* sub_string) {
 
 	return (contiguous_count == strlen(sub_string));
 }
+int is_flag(char* string) {
+	return contains(string, "--");
+}
