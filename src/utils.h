@@ -5,6 +5,8 @@
 static int TRUE 	= 1;
 static int FALSE 	= 0;
 
+static char* FLAG_HELP = "--help";
+
 void echo(char val[]){
 	printf("%s\n", val);
 }
@@ -90,4 +92,15 @@ int contains(char* string, char* sub_string) {
 
 int is_flag(char* string) {
 	return contains(string, "--");
+}
+
+
+void handle_flag(char* flag){
+	echo(flag);
+	// TODO: I'd much rather avoid using strcmp here, are there any alternatives?
+	// 	-> See - https://cplusplus.com/reference/cstring/strcmp/
+	if(strcmp(flag, FLAG_HELP) == 0){
+		// TODO: Implement
+		echo("--help flag not yet implemented");
+	}
 }
