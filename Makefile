@@ -20,7 +20,7 @@ show-docs:
 deploy:
 	@sudo echo "Building release build..."
 	@zig build --release=small
-	@cp zig-out/bin/contra ~/bin/
+	@sudo cp zig-out/bin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
 	@sudo ln -sf ~/bin/contra /usr/local/bin/contra
 	@echo "Creating symlink \t ✅"
