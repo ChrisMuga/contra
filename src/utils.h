@@ -4,6 +4,7 @@
 
 static int TRUE 	= 1;
 static int FALSE 	= 0;
+
 void echo(char val[]){
 	printf("%s\n", val);
 }
@@ -61,6 +62,7 @@ int has_char(char haystack[], char needle){
 
 	return 0;
 }
+
 // TODO: Not too sure about this algorithm/impementation but it seems to be working on majority test cases; Revisit.
 int contains(char* string, char* sub_string) {
 	int i = 0;
@@ -85,6 +87,7 @@ int contains(char* string, char* sub_string) {
 
 	return (contiguous_count == strlen(sub_string));
 }
+
 int is_flag(char* string) {
 	return contains(string, "--");
 }

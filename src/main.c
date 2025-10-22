@@ -37,6 +37,14 @@ int main(int argc, char* argv[]){
 
 	char* file_name = argv[1];
 
+	if(is_flag(file_name)){
+		echo("Yup...");
+		return 0;
+	}else{
+		echo("Nothing...");
+		return 0;
+	}
+
 	if(has_char(file_name, ':')){
 		char** split_vars = split(file_name, ':');
 
