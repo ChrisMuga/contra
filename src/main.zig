@@ -81,7 +81,7 @@ pub fn main() !void {
                     sln_a = try std.fmt.parseInt(u64, x, 10);
                 },
                 1 => {
-                    if(x.len > 0){
+                    if (x.len > 0) {
                         sln_b = try std.fmt.parseInt(u64, x, 10);
                     }
                 },

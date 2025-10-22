@@ -16,7 +16,8 @@ format:
 	@ zig fmt ./
 format-c:
 	@ echo "Formatting C files in src/"
-	@ clang-format ./src/* -i
+	@ clang-format ./src/*.c -i
+	@ clang-format ./src/*.h -i
 	@ echo "Done"
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
