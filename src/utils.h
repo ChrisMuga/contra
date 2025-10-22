@@ -2,105 +2,101 @@
 #include <stdlib.h>
 #include <string.h>
 
-static int TRUE 	= 1;
-static int FALSE 	= 0;
+static int TRUE = 1;
+static int FALSE = 0;
 
-static char* FLAG_HELP = "--help";
+static char *FLAG_HELP = "--help";
 
-void echo(char val[]){
-	printf("%s\n", val);
+void echo(char val[]) { printf("%s\n", val); }
+
+// TODO: Documentation
+char **split(char *string, char delimiter) {
+  char **res = (char **)malloc(strlen(string) + 1);
+  char *buffer = (char *)malloc(strlen(string) + 1);
+  int b = 0;
+  int count = 0;
+
+  for (int i = 0; i < strlen(string); i++) {
+    if (string[i] == delimiter) {
+      res[count] = buffer;
+      buffer = (char *)malloc(strlen(string));
+      b = 0;
+      count++;
+      continue;
+    } else {
+      buffer[b] = string[i];
+      b++;
+    }
+  }
+
+  if (strlen(buffer) > 0) {
+    res[count] = buffer;
+    buffer = (char *)malloc(strlen(string));
+  }
+  return res;
 }
 
 // TODO: Documentation
-char** split(char* string, char delimiter) {
-	char** res = (char**)malloc(strlen(string)+1);
-	char* buffer = (char*)malloc(strlen(string)+1);
-	int b = 0;
-	int count = 0;
+int *split_range(char *range) {
+  static int x[2];
 
-	for(int i =0; i < strlen(string); i++){
-		if(string[i] == delimiter) {
-			res[count] = buffer;
-			buffer = (char*)malloc(strlen(string));		
-			b = 0;
-			count++;
-			continue;
-		}else{
-			buffer[b] = string[i];
-			b++;
-		}
-	}
+  char **res = split(range, ':');
 
-	if(strlen(buffer) > 0){
-		res[count] = buffer;
-		buffer = (char*)malloc(strlen(string));
-	}
-	return res;
+  if (res[0] != NULL) {
+    x[0] = atoi(res[0]);
+  }
+
+  if (res[1] != NULL) {
+    x[1] = atoi(res[1]);
+  }
+
+  return x;
 }
 
-// TODO: Documentation
-int* split_range(char* range) {
-	static int x[2];
+int has_char(char haystack[], char needle) {
+  for (int i = 0; i < strlen(haystack); i++) {
+    if (haystack[i] == needle) {
+      return 1;
+    }
+  }
 
-	char** res = split(range, ':');
-
-	if(res[0] != NULL){
-		x[0] = atoi(res[0]);
-	}
-
-	if(res[1] != NULL){
-		x[1] = atoi(res[1]);
-	}
-	
-	return x;
+  return 0;
 }
 
-int has_char(char haystack[], char needle){
-	for(int i= 0; i < strlen(haystack); i++){
-		if(haystack[i] == needle){
-			return 1;
-		}
-	}
+// TODO: Not too sure about this algorithm/impementation but it seems to be
+// working on majority test cases; Revisit.
+int contains(char *string, char *sub_string) {
+  int i = 0;
+  int j = 0;
 
-	return 0;
+  int contiguous_count = 0;
+
+  while (i < strlen(string)) {
+    if (string[i] == sub_string[j]) {
+      contiguous_count++;
+      j++;
+    } else {
+      if (contiguous_count >= strlen(sub_string)) {
+        return TRUE;
+      }
+      contiguous_count = 0;
+      j = 0;
+    }
+
+    i++;
+  }
+
+  return (contiguous_count == strlen(sub_string));
 }
 
-// TODO: Not too sure about this algorithm/impementation but it seems to be working on majority test cases; Revisit.
-int contains(char* string, char* sub_string) {
-	int i = 0;
-	int j = 0;
+int is_flag(char *string) { return contains(string, "--"); }
 
-	int contiguous_count = 0;
-
-	while(i < strlen(string)) {
-		if(string[i] == sub_string[j]) {
-			contiguous_count++;
-			j++;
-		}else{
-			if(contiguous_count >= strlen(sub_string)){
-				return TRUE;
-			}
-			contiguous_count = 0;
-			j = 0;
-		}
-
-		i++;
-	}
-
-	return (contiguous_count == strlen(sub_string));
-}
-
-int is_flag(char* string) {
-	return contains(string, "--");
-}
-
-
-void handle_flag(char* flag){
-	echo(flag);
-	// TODO: I'd much rather avoid using strcmp here, are there any alternatives?
-	// 	-> See - https://cplusplus.com/reference/cstring/strcmp/
-	if(strcmp(flag, FLAG_HELP) == 0){
-		// TODO: Implement
-		echo("--help flag not yet implemented");
-	}
+void handle_flag(char *flag) {
+  echo(flag);
+  // TODO: I'd much rather avoid using strcmp here, are there any alternatives?
+  // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
+  if (strcmp(flag, FLAG_HELP) == 0) {
+    // TODO: Implement
+    echo("--help flag not yet implemented");
+  }
 }
