@@ -34,29 +34,19 @@ char** split(char* string, char delimiter) {
 }
 
 // TODO: Documentation
-int* split_range(char range[]) {
-	// TODO; Is there a way to know the length of char[] without string.h?
+int* split_range(char* range) {
 	static int x[2];
 
-	static char buffer[] = "";
+	char** res = split(range, ':');
 
-	int c = 0;
-	int y = 0;
-
-	for(int i = 0; i < strlen(range); i++) {
-		if(range[i] == ':'){
-			x[0] = atoi(buffer);
-			c = 0;
-			y += 1;
-			continue;
-		}else{
-			buffer[c] = range[i];
-			c++;
-		}
+	if(res[0] != NULL){
+		x[0] = atoi(res[0]);
 	}
 
-	x[y] = atoi(buffer);
-
+	if(res[1] != NULL){
+		x[1] = atoi(res[1]);
+	}
+	
 	return x;
 }
 
