@@ -15,9 +15,9 @@ dry-c:
 format:
 	@ zig fmt ./
 format-c:
-	@ echo "Formatting C files in src/"
-	@ clang-format ./src/*.c -i
-	@ clang-format ./src/*.h -i
+	@ echo "Formatting C files in src/.."
+	@ clang-format ./src/*.c -i --verbose
+	@ clang-format ./src/*.h -i --verbose
 	@ echo "Done"
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
