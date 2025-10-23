@@ -111,6 +111,6 @@ void handle_flag(char *flag) {
     echo("--help\t shows help/manual");
     echo("--zen\t shows zen");
   }else if(strcmp(flag, FLAG_ZEN) == 0) {
-	echo("> It is the surrender of the greatest to run risk and danger, and play dice for death.");
+	echo("And he who is not a bird should not camp above abysses.");
   }
 }
