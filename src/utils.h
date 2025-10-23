@@ -97,20 +97,20 @@ void handle_flag(char *flag) {
   // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
   if (strcmp(flag, FLAG_HELP) == 0) {
     echo("contra [file | arguments]");
-	echo("---------");
-	echo("Examples:");
-	echo("---------");
-	echo("contra file.txt\t\t reads file");
-	echo("contra file.txt:40\t reads line 40 only");
-	echo("contra file.txt 40\t reads line 40 only");
-	echo("contra file.txt:40:50\t reads lines 40 to 50 of the file");
-	echo("contra file.txt 40:50\t reads lines 40 to 50 of the file");
-	echo("---------");
-	echo("Arguments:");
-	echo("---------");
+    echo("---------");
+    echo("Examples:");
+    echo("---------");
+    echo("contra file.txt\t\t reads file");
+    echo("contra file.txt:40\t reads line 40 only");
+    echo("contra file.txt 40\t reads line 40 only");
+    echo("contra file.txt:40:50\t reads lines 40 to 50 of the file");
+    echo("contra file.txt 40:50\t reads lines 40 to 50 of the file");
+    echo("---------");
+    echo("Arguments:");
+    echo("---------");
     echo("--help\t shows help/manual");
     echo("--zen\t shows zen");
-  }else if(strcmp(flag, FLAG_ZEN) == 0) {
-	echo("And he who is not a bird should not camp above abysses.");
+  } else if (strcmp(flag, FLAG_ZEN) == 0) {
+    echo("And he who is not a bird should not camp above abysses.");
   }
 }
