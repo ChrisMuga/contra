@@ -108,5 +108,6 @@ void handle_flag(char *flag) {
 	echo("Arguments:");
 	echo("---------");
     echo("--help\t shows help/manual");
+    echo("--zen\t shows help/manual");
   }
 }
