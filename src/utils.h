@@ -96,7 +96,7 @@ void handle_flag(char *flag) {
   // TODO: I'd much rather avoid using strcmp here, are there any alternatives?
   // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
   if (strcmp(flag, FLAG_HELP) == 0) {
-    echo("contra [arguments | file]");
+    echo("contra [file | arguments]");
 	echo("---------");
 	echo("Examples:");
 	echo("---------");
