@@ -6,6 +6,7 @@ static int TRUE = 1;
 static int FALSE = 0;
 
 static char *FLAG_HELP = "--help";
+static char *FLAG_ZEN = "--zen";
 
 void echo(char val[]) { printf("%s\n", val); }
 
