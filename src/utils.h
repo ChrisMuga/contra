@@ -97,6 +97,7 @@ void handle_flag(char *flag) {
   // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
   if (strcmp(flag, FLAG_HELP) == 0) {
     echo("contra [arguments | file]");
+	echo("---------");
 	echo("Examples:");
 	echo("---------");
 	echo("contra file.txt\t\t reads file");
@@ -108,7 +109,7 @@ void handle_flag(char *flag) {
 	echo("Arguments:");
 	echo("---------");
     echo("--help\t shows help/manual");
-    echo("--zen\t shows help/manual");
+    echo("--zen\t shows zen");
   }else if(strcmp(flag, FLAG_ZEN) == 0) {
 	echo("> It is the surrender of the greatest to run risk and danger, and play dice for death.");
   }
