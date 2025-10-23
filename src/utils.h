@@ -93,7 +93,6 @@ int contains(char *string, char *sub_string) {
 int is_flag(char *string) { return contains(string, "--"); }
 
 void handle_flag(char *flag) {
-  echo(flag);
   // TODO: I'd much rather avoid using strcmp here, are there any alternatives?
   // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
   if (strcmp(flag, FLAG_HELP) == 0) {
