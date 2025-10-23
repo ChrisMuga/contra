@@ -97,6 +97,17 @@ void handle_flag(char *flag) {
   // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
   if (strcmp(flag, FLAG_HELP) == 0) {
     // TODO: Implement
-    echo("--help flag not yet implemented");
+    echo("contra [arguments | file]");
+	echo("Examples:");
+	echo("---------");
+	echo("contra file.txt\t\t reads file");
+	echo("contra file.txt:40\t reads line 40 only");
+	echo("contra file.txt 40\t reads line 40 only");
+	echo("contra file.txt:40:50\t reads lines 40 to 50 of the file");
+	echo("contra file.txt 40:50\t reads lines 40 to 50 of the file");
+	echo("---------");
+	echo("Arguments:");
+	echo("---------");
+    echo("--help\t shows help/manual");
   }
 }
