@@ -12,7 +12,6 @@
 // TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
 // TODO: Script for debug and production/release builds
 // TODO: contra --help
-// TODO: contra --version
 // TODO: Error handling in case:
 //  - contra test.txt e (if line specifier A is invalid)
 //  - contra test.txt 50:e (if line specifier B is invalid)

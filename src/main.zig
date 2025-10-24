@@ -25,7 +25,6 @@ const fs = std.fs;
 
 // TODO: Get started with tests
 // TODO: Implement man page for contra
-// TODO: contra --version
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Look into semver - semantic versioning
 // TODO: contra test.txt:10
