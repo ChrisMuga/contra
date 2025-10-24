@@ -21,6 +21,7 @@ char **split(char *string, char delimiter) {
   for (int i = 0; i < strlen(string); i++) {
     if (string[i] == delimiter) {
       res[count] = buffer;
+      res[count + 1] = NULL;
       buffer = (char *)malloc(strlen(string));
       b = 0;
       count++;
@@ -33,8 +34,12 @@ char **split(char *string, char delimiter) {
 
   if (strlen(buffer) > 0) {
     res[count] = buffer;
+    res[count + 1] = NULL;
     buffer = (char *)malloc(strlen(string));
+  } else {
+    res[0] = NULL;
   }
+
   return res;
 }
 
