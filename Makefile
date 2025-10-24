@@ -8,6 +8,10 @@ build-c:
 	@ gcc -o bin/contra src/main.c
 run-c:
 	@ ./bin/contra samples/input.txt
+build-odin:
+	@ odin build ./src -out:bin/contra
+run-odin:
+	@ ./bin/contra
 # Dry run C build
 dry-c:
 	@ make build-c -s
