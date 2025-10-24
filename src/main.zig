@@ -60,7 +60,8 @@ pub fn main() !void {
     var sln_b: ?u64 = null;
 
     if (j <= 1) {
-        utils.echo("Error: Not enough arguments. Provide file name/path. See contra --help for more");
+        utils.handleFlagVersion();
+        utils.handleFlagHelp();
         return;
     } else if (j == 2) {
         // Check and handle early if we run into a flag
