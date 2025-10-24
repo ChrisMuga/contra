@@ -120,7 +120,7 @@ void handle_flag(char *flag) {
   } else if (strcmp(flag, FLAG_ZEN) == 0) {
     echo("And he who is not a bird should not camp above abysses.");
   } else if (strcmp(flag, FLAG_VERSION) == 0) {
-    echo("v0.0.1");
+    echo("contra v0.0.1");
   }
 }
 
