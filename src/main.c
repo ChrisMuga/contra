@@ -26,7 +26,9 @@
 //     - ./bin/contra example.txt:14:15 // To print line 14 only
 int main(int argc, char *argv[]) {
   if (argc <= 1) {
-    printf("Error: Please specify the input file\n");
+    handle_flag(FLAG_VERSION);
+    echo("-----");
+    handle_flag(FLAG_HELP);
     return 0;
   }
 
