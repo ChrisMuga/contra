@@ -23,18 +23,18 @@ show-docs:
 	@ zig build-lib -femit-docs src/main.zig
 	@ python3 -m http.server 8000 -d docs/
 deploy:
-	@sudo echo "Building release build..."
-	@zig build --release=small
-	@sudo cp zig-out/bin/contra ~/bin/
+	@ sudo echo "Building release build..."
+	@ zig build --release=small
+	@ sudo cp zig-out/bin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
-	@sudo ln -sf ~/bin/contra /usr/local/bin/contra
-	@echo "Creating symlink \t ✅"
-	@echo "Done \t\t\t ✅"
+	@ sudo ln -sf ~/bin/contra /usr/local/bin/contra
+	@ echo "Creating symlink \t ✅"
+	@ echo "Done \t\t\t ✅"
 deploy-c:
-	@sudo echo "Building release build..."
-	@make build-c -s
-	@sudo cp bin/contra ~/bin/
+	@ sudo echo "Building release build..."
+	@ make build-c -s
+	@ sudo cp bin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
-	@sudo ln -sf ~/bin/contra /usr/local/bin/contra
-	@echo "Creating symlink \t ✅"
-	@echo "Done \t\t\t ✅"
+	@ sudo ln -sf ~/bin/contra /usr/local/bin/contra
+	@ echo "Creating symlink \t ✅"
+	@ echo "Done \t\t\t ✅"
