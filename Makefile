@@ -31,6 +31,8 @@ deploy:
 	@echo "Creating symlink \t ✅"
 	@echo "Done \t\t\t ✅"
 deploy-c:
+	@sudo echo "Building release build..."
+	@make build-c -s
 	@sudo cp bin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
 	@sudo ln -sf ~/bin/contra /usr/local/bin/contra
