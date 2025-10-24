@@ -22,6 +22,10 @@ format-c:
 	@ echo "Done"
 format-all:
 	@ make format format-c -s;
+clean:
+	@ echo "Clearing caches"
+	@ rm -rf ~/.cache/zig .zig-cache zig-out
+	@ echo "Done ✅"
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
 	@ python3 -m http.server 8000 -d docs/
