@@ -50,6 +50,7 @@ pub fn handleFlagHelp() void {
         \\args:
         \\  --help                 shows help manual/documentation
         \\  --zen                  shows zen
+        \\  --version              shows version
         \\
     , .{});
 }

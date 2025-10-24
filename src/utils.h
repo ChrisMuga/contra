@@ -109,8 +109,9 @@ void handle_flag(char *flag) {
     echo("---------");
     echo("Arguments:");
     echo("---------");
-    echo("--help\t shows help/manual");
-    echo("--zen\t shows zen");
+    echo("--help\t\t shows help/manual");
+    echo("--zen\t\t shows zen");
+    echo("--version\t shows version");
   } else if (strcmp(flag, FLAG_ZEN) == 0) {
     echo("And he who is not a bird should not camp above abysses.");
   } else if (strcmp(flag, FLAG_VERSION) == 0) {
