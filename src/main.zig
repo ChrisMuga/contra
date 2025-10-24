@@ -27,6 +27,7 @@ const fs = std.fs;
 // TODO: Implement man page for contra
 // TODO: Implement piping e.g. `git log | contra`
 // TODO: Look into semver - semantic versioning
+// TODO: use @cImport to run C code in zig
 // TODO: contra test.txt:10
 // TODO: contra test.txt:10:20
 // TODO: Error handling in case:
