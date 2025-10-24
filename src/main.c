@@ -45,14 +45,15 @@ int main(int argc, char *argv[]) {
 
   if (has_char(file_name, ':')) {
     char **split_vars = split(file_name, ':');
+    int len_split = len(split_vars);
 
     file_name = split_vars[0];
 
-    if (split_vars[1] != NULL) {
+    if (len_split > 1) {
       sln_a = atoi(split_vars[1]);
     }
 
-    if (split_vars[2] != NULL) {
+    if (len_split > 2) {
       sln_b = atoi(split_vars[2]);
     }
 
