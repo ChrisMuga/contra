@@ -5,8 +5,9 @@
 static int TRUE = 1;
 static int FALSE = 0;
 
-static char *FLAG_HELP = "--help";
-static char *FLAG_ZEN = "--zen";
+static char *FLAG_HELP 		= "--help";
+static char *FLAG_ZEN 		= "--zen";
+static char *FLAG_VERSION 	= "--version";
 
 void echo(char val[]) { printf("%s\n", val); }
 
@@ -112,5 +113,7 @@ void handle_flag(char *flag) {
     echo("--zen\t shows zen");
   } else if (strcmp(flag, FLAG_ZEN) == 0) {
     echo("And he who is not a bird should not camp above abysses.");
-  }
+	} else if (strcmp(flag, FLAG_VERSION) == 0) {
+		echo("v0.0.1");
+	}
 }
