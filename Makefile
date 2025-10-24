@@ -13,7 +13,7 @@ dry-c:
 	@ make build-c -s
 	@ ./bin/contra samples/input.txt 37:38
 format:
-	@ echo "Formatting ALL .zig files..."
+	@ echo "Formatting all .zig files..."
 	@ zig fmt ./
 format-c:
 	@ echo "Formatting C files in src/.."
