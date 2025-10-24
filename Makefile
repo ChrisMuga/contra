@@ -10,7 +10,7 @@ run-c:
 	@ ./bin/contra samples/input.txt
 # Dry run C build
 dry-c:
-	@ make build-c
+	@ make build-c -s
 	@ ./bin/contra samples/input.txt 37:38
 format:
 	@ echo "Formatting ALL .zig files..."
