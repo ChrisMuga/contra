@@ -123,3 +123,18 @@ void handle_flag(char *flag) {
     echo("v0.0.1");
   }
 }
+
+int len(char **val) {
+  int i = 0;
+
+  while (val[i] != NULL) {
+    i++;
+  }
+
+  if (i == 0) {
+
+    return 0;
+  }
+
+  return i;
+}
