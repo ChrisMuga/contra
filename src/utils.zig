@@ -14,6 +14,7 @@ pub fn cls() void {
 
 pub const FLAG_HELP = "--help";
 pub const FLAG_ZEN = "--zen";
+pub const FLAG_VERSION = "--version";
 
 /// isFlag checks the 1st command line args to see if it is prepended by "--"
 pub fn isFlag(val: []const u8) bool {
@@ -25,6 +26,8 @@ pub fn handleFlag(flag: []const u8) void {
         handleFlagHelp();
     } else if (std.mem.eql(u8, flag, FLAG_ZEN)) {
         handleFlagZen();
+    } else if (std.mem.eql(u8, flag, FLAG_VERSION)) {
+        handleFlagVersion();
     } else {
         std.debug.print("Error: {s} is not a valid argument\n", .{flag});
     }
@@ -53,4 +56,8 @@ pub fn handleFlagHelp() void {
 
 pub fn handleFlagZen() void {
     echo("\"Dust thou art - to dust returnest; was not spoken of the soul\" ;)");
+}
+
+pub fn handleFlagVersion() void {
+    echo("v0.0.1");
 }
