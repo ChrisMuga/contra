@@ -13,12 +13,15 @@ dry-c:
 	@ make build-c
 	@ ./bin/contra samples/input.txt 37:38
 format:
+	@ echo "Formatting ALL .zig files..."
 	@ zig fmt ./
 format-c:
 	@ echo "Formatting C files in src/.."
 	@ clang-format ./src/*.c -i --verbose
 	@ clang-format ./src/*.h -i --verbose
 	@ echo "Done"
+format-all:
+	@ make format format-c -s;
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
 	@ python3 -m http.server 8000 -d docs/
