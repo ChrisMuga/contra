@@ -10,7 +10,6 @@ import "core:os";
 FLAG_VERSION : string : "--version"
 
 main :: proc() {
-	// TODO: Implement file read
 	// - https://pkg.odin-lang.org/core/os/#open
 	// - https://pkg.odin-lang.org/core/os/#read
 
@@ -39,7 +38,6 @@ handle_flag :: proc(flag: string) {
 	}
 }
 
-// TODO: Implement line numbers
 read_file :: proc(path: string) {
 	handle, err := os.open(path)
 
@@ -50,6 +48,8 @@ read_file :: proc(path: string) {
 
 		buff := make([dynamic]u8, file_size)
 
+		line_number:int = 0
+
 		for {
 			total_read, err := os.read(handle, buff[:])
 
@@ -59,6 +59,11 @@ read_file :: proc(path: string) {
 				break;
 			}
 
+			if i == 0 || buff[i-1] == '\n' {
+				line_number += 1
+				fmt.printf("%d\t", line_number)
+			}
+
 			fmt.printf("%c", buff[i])
 
 			i += 1
@@ -66,7 +71,7 @@ read_file :: proc(path: string) {
 
 		delete(buff)
 	}else {
-		fmt.println("Error--->", err)
+		fmt.println("Error: Cannot open file", err)
 	}
 
 }
