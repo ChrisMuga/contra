@@ -27,7 +27,7 @@ main :: proc() {
 
 			if len(split_args) == 0 {
 				fmt.println("No file specified")
-			} else if(len(split_args) == 1){
+			} else if(len(split_args) == 1) {
 				read_file(input)
 			} else {
 				line_number, ok := strconv.parse_int(split_args[1])
@@ -92,7 +92,7 @@ read_file :: proc(path: string, specified_line_number: int = -1) {
 		}
 
 		delete(buff)
-	}else {
+	} else {
 		fmt.println("Error: Cannot open file", err)
 	}
 
