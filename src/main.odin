@@ -45,6 +45,7 @@ handle_flag :: proc(flag: string) {
 	switch flag {
 		case FLAG_VERSION:
 			fmt.println("contra v0.0.1")
+			fmt.println("Built with Odin - https://github.com/odin-lang/Odin")
 	}
 }
 
