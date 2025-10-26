@@ -17,7 +17,9 @@ main :: proc() {
 	i: int = 0
 	j: int  = len(os.args)
 
-	if j == 2 {
+	if j == 1 {
+		help()
+	} else if j == 2 {
 		input: string = os.args[1]
 
 		if is_flag(input) {
@@ -45,7 +47,6 @@ handle_flag :: proc(flag: string) {
 	switch flag {
 		case FLAG_VERSION:
 			fmt.println("contra v0.0.1")
-			fmt.println("Built with Odin - https://github.com/odin-lang/Odin")
 	}
 }
 
@@ -96,5 +97,18 @@ read_file :: proc(path: string, specified_line_number: int = -1) {
 	} else {
 		fmt.println("Error: Cannot open file", err)
 	}
+}
 
+help :: proc() {
+	handle_flag(FLAG_VERSION)
+	fmt.println("Built with Odin - https://github.com/odin-lang/Odin")
+	// TODO: Fix this
+	fmt.println(`
+		contra [file | args]
+		===
+		args
+
+		--help		show help
+
+		`)
 }
