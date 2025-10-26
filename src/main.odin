@@ -40,25 +40,29 @@ handle_flag :: proc(flag: string) {
 }
 
 read_file :: proc(path: string) {
-	fmt.println(path);
 	handle, err := os.open(path)
 
 	if err == nil {
-		fmt.println(handle)
-
-		i:int = 0;
+		i:i64 = 0
 		
-		// x, y := os.file_size(path)
-		buff: [2156]u8
+		file_size, y := os.file_size(handle)
+
+		buff := make([dynamic]u8, file_size)
+
 		for {
 			total_read, err := os.read(handle, buff[:])
-			if i == total_read-1 {
+
+			if i >= file_size {
+				fmt.printf("\n")
+
 				break;
 			}
-
 			fmt.printf("%c", buff[i])
+
 			i += 1
 		}
+
+		delete(buff)
 	}else {
 		fmt.println("Error--->", err)
 	}
