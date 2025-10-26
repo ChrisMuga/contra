@@ -39,6 +39,7 @@ handle_flag :: proc(flag: string) {
 	}
 }
 
+// TODO: Implement line numbers
 read_file :: proc(path: string) {
 	handle, err := os.open(path)
 
@@ -57,6 +58,7 @@ read_file :: proc(path: string) {
 
 				break;
 			}
+
 			fmt.printf("%c", buff[i])
 
 			i += 1
