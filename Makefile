@@ -50,3 +50,11 @@ deploy-c:
 	@ sudo ln -sf ~/bin/contra /usr/local/bin/contra
 	@ echo "Creating symlink \t ✅"
 	@ echo "Done \t\t\t ✅"
+deploy-odin:
+	@ sudo echo "Building release build..."
+	@ make build-odin -s
+	@ sudo cp bin/odin/contra ~/bin/
+	@ echo "Copying binary \t\t ✅"
+	@ sudo ln -sf ~/bin/contra /usr/local/bin/contra
+	@ echo "Creating symlink \t ✅"
+	@ echo "Done \t\t\t ✅"
