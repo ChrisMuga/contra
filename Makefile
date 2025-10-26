@@ -9,7 +9,8 @@ build-c:
 run-c:
 	@ ./bin/contra samples/input.txt
 build-odin:
-	@ odin build ./src -out:bin/contra
+	@ mkdir -p bin/odin
+	@ odin build ./src -out:bin/odin/contra
 run-odin:
 	@ ./bin/contra
 # Dry run C build
