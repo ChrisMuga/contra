@@ -18,10 +18,12 @@ main :: proc() {
 	j: int  = len(os.args)
 
 	if j == 2 {
-		flag: string = os.args[1]
+		input: string = os.args[1]
 
-		if is_flag(flag) {
-			handle_flag(flag)
+		if is_flag(input) {
+			handle_flag(input)
+		} else {
+			read_file(input)
 		}
 	}
 }
@@ -35,4 +37,30 @@ handle_flag :: proc(flag: string) {
 		case FLAG_VERSION:
 			fmt.println("contra v0.0.1")
 	}
+}
+
+read_file :: proc(path: string) {
+	fmt.println(path);
+	handle, err := os.open(path)
+
+	if err == nil {
+		fmt.println(handle)
+
+		i:int = 0;
+		
+		// x, y := os.file_size(path)
+		buff: [2156]u8
+		for {
+			total_read, err := os.read(handle, buff[:])
+			if i == total_read-1 {
+				break;
+			}
+
+			fmt.printf("%c", buff[i])
+			i += 1
+		}
+	}else {
+		fmt.println("Error--->", err)
+	}
+
 }
