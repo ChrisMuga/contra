@@ -3,6 +3,7 @@ package main
 import "core:fmt"
 import "core:strings"
 import "core:os";
+import "core:strconv";
 
 // Odin language ref: 
 // - https://odin-lang.org/docs/overview/
@@ -22,7 +23,16 @@ main :: proc() {
 		if is_flag(input) {
 			handle_flag(input)
 		} else {
-			read_file(input)
+			split_args: []string = strings.split(input, ":")
+
+			if len(split_args) == 0 {
+				fmt.println("No file specified")
+			} else if(len(split_args) == 1){
+				read_file(input)
+			} else {
+				line_number, ok := strconv.parse_int(split_args[1])
+				read_file(split_args[0], line_number)
+			}
 		}
 	}
 }
@@ -38,7 +48,7 @@ handle_flag :: proc(flag: string) {
 	}
 }
 
-read_file :: proc(path: string) {
+read_file :: proc(path: string, specified_line_number: int = -1) {
 	handle, err := os.open(path)
 
 	if err == nil {
@@ -61,10 +71,22 @@ read_file :: proc(path: string) {
 
 			if i == 0 || buff[i-1] == '\n' {
 				line_number += 1
-				fmt.printf("%d\t", line_number)
+				if specified_line_number > 0 {
+					if specified_line_number == line_number {
+						fmt.printf("%d\t", line_number)
+					}
+				} else {
+					fmt.printf("%d\t", line_number)
+				}
 			}
 
-			fmt.printf("%c", buff[i])
+			if specified_line_number > 0 {
+				if specified_line_number == line_number {
+					fmt.printf("%c", buff[i])
+				}
+			} else {
+				fmt.printf("%c", buff[i])
+			}
 
 			i += 1
 		}
