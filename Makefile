@@ -12,7 +12,7 @@ build-odin:
 	@ mkdir -p bin/odin
 	@ odin build ./src -out:bin/odin/contra
 run-odin:
-	@ ./bin/contra
+	@ ./bin/odin/contra samples/input.txt
 # Dry run C build
 dry-c:
 	@ make build-c -s
