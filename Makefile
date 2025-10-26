@@ -35,7 +35,7 @@ show-docs:
 	@ zig build-lib -femit-docs src/main.zig
 	@ python3 -m http.server 8000 -d docs/
 deploy:
-	@ sudo echo "Building release build..."
+	@ sudo echo "Building Zig release build..."
 	@ zig build --release=small
 	@ sudo cp zig-out/bin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
@@ -43,7 +43,7 @@ deploy:
 	@ echo "Creating symlink \t ✅"
 	@ echo "Done \t\t\t ✅"
 deploy-c:
-	@ sudo echo "Building release build..."
+	@ sudo echo "Building C release build..."
 	@ make build-c -s
 	@ sudo cp bin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
@@ -51,7 +51,7 @@ deploy-c:
 	@ echo "Creating symlink \t ✅"
 	@ echo "Done \t\t\t ✅"
 deploy-odin:
-	@ sudo echo "Building release build..."
+	@ sudo echo "Building Odin release build..."
 	@ make build-odin -s
 	@ sudo cp bin/odin/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
