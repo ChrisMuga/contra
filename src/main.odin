@@ -103,12 +103,14 @@ help :: proc() {
 	handle_flag(FLAG_VERSION)
 	fmt.println("Built with Odin - https://github.com/odin-lang/Odin")
 	// TODO: Fix this
-	fmt.println(`
-		contra [file | args]
-		===
-		args
+	fmt.println(
+	`
+contra [file | args]
+---------
+args
+---------
 
-		--help		show help
-
-		`)
+--help			show help
+--version		show version
+	`)
 }
