@@ -9,6 +9,7 @@ import "core:strconv";
 // - https://odin-lang.org/docs/overview/
 
 FLAG_VERSION : string : "--version"
+FLAG_HELP: string : "--help"
 
 main :: proc() {
 	// - https://pkg.odin-lang.org/core/os/#open
@@ -47,6 +48,8 @@ handle_flag :: proc(flag: string) {
 	switch flag {
 		case FLAG_VERSION:
 			fmt.println("contra v0.0.1")
+		case FLAG_HELP:
+			help()
 	}
 }
 
