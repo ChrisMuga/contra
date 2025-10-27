@@ -18,7 +18,7 @@ handle_flag :: proc(flag: string) {
 	}
 }
 
-read_file :: proc(path: string, specified_line_number: int = -1) {
+read_file :: proc(path: string, line_a: int = -1) {
 	handle, err := os.open(path)
 
 	if err == nil {
@@ -41,8 +41,8 @@ read_file :: proc(path: string, specified_line_number: int = -1) {
 
 			if i == 0 || buff[i-1] == '\n' {
 				line_number += 1
-				if specified_line_number > 0 {
-					if specified_line_number == line_number {
+				if line_a > 0 {
+					if line_a == line_number {
 						fmt.printf("%d\t", line_number)
 					}
 				} else {
@@ -50,8 +50,8 @@ read_file :: proc(path: string, specified_line_number: int = -1) {
 				}
 			}
 
-			if specified_line_number > 0 {
-				if specified_line_number == line_number {
+			if line_a > 0 {
+				if line_a == line_number {
 					fmt.printf("%c", buff[i])
 				}
 			} else {
