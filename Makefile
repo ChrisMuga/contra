@@ -10,7 +10,7 @@ run-c:
 	@ ./bin/contra samples/input.txt
 build-odin:
 	@ mkdir -p bin/odin
-	@ odin build ./src -out:bin/odin/contra
+	@ odin build ./src/odin -out:bin/odin/contra
 run-odin:
 	@ ./bin/odin/contra samples/input.txt:20
 # Dry run C build
