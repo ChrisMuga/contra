@@ -41,6 +41,8 @@ main :: proc() {
 
 					if ok_a && ok_b {
 						file.read_file(file_name, line_a, line_b)
+					} else {
+						fmt.printf("Error. %s:%s is not a valid range\n", split_args[1], split_args[2])
 					}
 				} 
 			}
