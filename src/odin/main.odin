@@ -35,7 +35,7 @@ main :: proc() {
 					if ok_a {
 						file.read_file(file_name, line_a)
 					} else {
-						fmt.println("Error: Please enter a valid line-number.", split_args[1], "is not a number")	
+						fmt.println("Error: Please enter a valid line-number.", split_args[1], "is not a number")
 					}
 				} else if len(split_args) > 2 {
 					line_a, ok_a := strconv.parse_int(split_args[1])
