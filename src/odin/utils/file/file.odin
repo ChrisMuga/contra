@@ -24,13 +24,15 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 				break;
 			}
 
+			in_range: bool = line_b > line_a && (line_number >= line_a && line_number <= line_b)
+
 			if i == 0 || buff[i-1] == '\n' {
 				line_number += 1
 
 				if line_a > 0 {
 					if line_a == line_number {
 						fmt.printf("%d\t", line_number)
-					} else if line_b > line_a && (line_number >= line_a && line_number <= line_b) {
+					} else if in_range {
 						fmt.printf("%d\t", line_number)
 					}
 				} else {
@@ -41,7 +43,7 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 			if line_a > 0 {
 				if line_a == line_number {
 					fmt.printf("%c", buff[i])
-				} else if line_b > line_a && (line_number >= line_a && line_number <= line_b) {
+				} else if in_range {
 					fmt.printf("%c", buff[i])
 				}
 			} else {
