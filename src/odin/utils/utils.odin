@@ -1,9 +1,12 @@
-package contra
+package utils
 
 import "core:fmt"
 import "core:strings"
 import "core:os";
 import "core:strconv";
+
+FLAG_VERSION : string : "--version"
+FLAG_HELP: string : "--help"
 
 is_flag :: proc(s: string) -> bool {
 	return strings.contains(s, "--")
