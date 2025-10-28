@@ -5,7 +5,7 @@ build:
 run:
 	@ ./zig-out/bin/contra samples/input.txt
 build-c:
-	@ gcc -o bin/contra src/main.c
+	@ gcc -o bin/contra src/c/main.c
 run-c:
 	@ ./bin/contra samples/input.txt
 build-odin:
