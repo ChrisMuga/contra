@@ -26,6 +26,7 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 
 			if i == 0 || buff[i-1] == '\n' {
 				line_number += 1
+
 				if line_a > 0 {
 					if line_a == line_number {
 						fmt.printf("%d\t", line_number)
