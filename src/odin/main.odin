@@ -5,8 +5,8 @@ import "core:strings"
 import "core:os";
 import "core:strconv";
 
-import "utils/common"
-import "utils/file"
+import "utils:common"
+import "utils:file"
 
 main :: proc() {
 	i: int = 0
