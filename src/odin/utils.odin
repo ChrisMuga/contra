@@ -1,4 +1,4 @@
-package odin
+package contra
 
 import "core:fmt"
 import "core:strings"
