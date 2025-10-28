@@ -27,14 +27,19 @@ main :: proc() {
 			} else if(len(split_args) == 1) {
 				file.read_file(input)
 			} else {
-				line_a, ok_a := strconv.parse_int(split_args[1])
-				line_b, ok_b := strconv.parse_int(split_args[2])
+				if(len(split_args) == 2) {
+					line_a, ok_a := strconv.parse_int(split_args[1])
+					if ok_a {
+						file.read_file(split_args[0], line_a)
+					}
+				} else if len(split_args) > 2 {
+					line_a, ok_a := strconv.parse_int(split_args[1])
+					line_b, ok_b := strconv.parse_int(split_args[2])
 
-				if ok_a && ok_b {
-					file.read_file(split_args[0], line_a, line_b)
-				} else if ok_a {
-					file.read_file(split_args[0], line_a)
-				}
+					if ok_a && ok_b {
+						file.read_file(split_args[0], line_a, line_b)
+					}
+				} 
 			}
 		}
 	}
