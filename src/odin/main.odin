@@ -7,9 +7,6 @@ import "core:strconv";
 import "utils"
 
 main :: proc() {
-	// - https://pkg.odin-lang.org/core/os/#open
-	// - https://pkg.odin-lang.org/core/os/#read
-
 	i: int = 0
 	j: int  = len(os.args)
 
