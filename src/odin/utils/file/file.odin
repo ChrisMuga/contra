@@ -3,6 +3,7 @@ package file
 import "core:os";
 import "core:fmt"
 
+// TODO: Show prompt depending on range situation
 read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 	handle, err := os.open(path)
 
