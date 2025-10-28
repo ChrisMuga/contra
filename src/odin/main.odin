@@ -31,6 +31,7 @@ main :: proc() {
 
 				if len(split_args) == 2 {
 					line_a, ok_a := strconv.parse_int(split_args[1])
+
 					if ok_a {
 						file.read_file(file_name, line_a)
 					}
