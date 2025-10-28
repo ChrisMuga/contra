@@ -3,7 +3,7 @@ package file
 import "core:os";
 import "core:fmt"
 
-read_file :: proc(path: string, line_a: int = -1) {
+read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 	handle, err := os.open(path)
 
 	if err == nil {
@@ -29,6 +29,8 @@ read_file :: proc(path: string, line_a: int = -1) {
 				if line_a > 0 {
 					if line_a == line_number {
 						fmt.printf("%d\t", line_number)
+					} else if line_b > line_a && (line_number >= line_a && line_number <= line_b) {
+						fmt.printf("%d\t", line_number)
 					}
 				} else {
 					fmt.printf("%d\t", line_number)
@@ -37,6 +39,8 @@ read_file :: proc(path: string, line_a: int = -1) {
 
 			if line_a > 0 {
 				if line_a == line_number {
+					fmt.printf("%c", buff[i])
+				} else if line_b > line_a && (line_number >= line_a && line_number <= line_b) {
 					fmt.printf("%c", buff[i])
 				}
 			} else {
