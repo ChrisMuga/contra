@@ -23,11 +23,17 @@ handle_flag :: proc(flag: string) {
 
 help :: proc() {
 	handle_flag(FLAG_VERSION)
-	fmt.println("Built with Odin - https://github.com/odin-lang/Odin")
+	fmt.println("\nBuilt with Odin - https://github.com/odin-lang/Odin")
 	// TODO: Fix this
 	fmt.println(
 	`
 contra [file | args]
+---------
+examples
+---------
+contra file.txt
+contra file.txt 40 (prints L40 only)
+contra file.txt 40:50 (prints L40-L50)
 ---------
 args
 ---------
