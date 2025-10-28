@@ -121,6 +121,7 @@ void handle_flag(char *flag) {
     echo("And he who is not a bird should not camp above abysses.");
   } else if (strcmp(flag, FLAG_VERSION) == 0) {
     echo("contra v0.0.1");
+    echo("* Built with C: https://cplusplus.com/reference/clibrary/");
   }
 }
 

@@ -5,9 +5,10 @@ build:
 run:
 	@ ./zig-out/bin/contra samples/input.txt
 build-c:
-	@ gcc -o bin/contra src/c/main.c
+	@ mkdir -p bin/c
+	@ gcc -o bin/c/contra src/c/main.c
 run-c:
-	@ ./bin/contra samples/input.txt
+	@ ./bin/c/contra samples/input.txt
 build-odin:
 	@ mkdir -p bin/odin
 	@ odin build ./src/odin -out:bin/odin/contra
@@ -45,7 +46,7 @@ deploy:
 deploy-c:
 	@ sudo echo "Building C release build..."
 	@ make build-c -s
-	@ sudo cp bin/contra ~/bin/
+	@ sudo cp bin/c/contra ~/bin/
 	@ echo "Copying binary \t\t ✅"
 	@ sudo ln -sf ~/bin/contra /usr/local/bin/contra
 	@ echo "Creating symlink \t ✅"
