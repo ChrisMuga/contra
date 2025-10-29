@@ -16,6 +16,12 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 
 		line_number:int = 0
 
+		if line_a == -1 && line_a == -1 {
+			fmt.println("--------------")
+			fmt.printf("Reading %s\n", path)
+			fmt.println("--------------")
+		}
+
 		for {
 			total_read, err := os.read(handle, buff[:])
 
