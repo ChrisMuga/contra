@@ -54,6 +54,6 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 
 		delete(buff)
 	} else {
-		fmt.println("Error: Cannot open file", err)
+		fmt.println("Error: Cannot open file ->", err)
 	}
 }
