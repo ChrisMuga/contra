@@ -20,11 +20,11 @@ build-odin:
 build-odin-win:
 	@ odin build ./src/odin -out:bin/odin/contra.exe -collection:utils=./src/odin/utils
 run-odin:
-	@ ./bin/odin/contra samples/input.txt:20
+	@ ./bin/odin/contra samples/input.txt:5
 # Dry run C build
 dry-c:
 	@ make build-c -s
-	@ ./bin/contra samples/input.txt 37:38
+	@ ./bin/c/contra samples/input.txt 5:8
 format:
 	@ echo "Formatting all .zig files..."
 	@ zig fmt ./
