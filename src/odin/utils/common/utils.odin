@@ -4,8 +4,9 @@ import "core:fmt"
 import "core:strings"
 import "core:strconv";
 
-FLAG_VERSION : string : "--version"
-FLAG_HELP: string : "--help"
+FLAG_VERSION 	: string : "--version"
+FLAG_HELP		: string : "--help"
+FLAG_ZEN		: string : "--zen"
 
 is_flag :: proc(s: string) -> bool {
 	return strings.contains(s, "--")
@@ -17,6 +18,8 @@ handle_flag :: proc(flag: string) {
 			fmt.println("contra v0.0.1")
 		case FLAG_HELP:
 			help()
+		case FLAG_ZEN:
+			zen()
 	}
 }
 
@@ -40,5 +43,10 @@ args
 
 --help			show help
 --version		show version
+--zen			show zen
 	`)
+}
+
+zen :: proc() {
+	fmt.println("He will win who, prepared himself, waits to take the enemy unprepared.")
 }

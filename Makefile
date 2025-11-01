@@ -7,11 +7,18 @@ run:
 build-c:
 	@ mkdir -p bin/c
 	@ gcc -o bin/c/contra src/c/main.c
+build-c-win:
+	@ echo Building Windows target (C)
+	@ gcc -o bin\c\contra src\c\main.c
 run-c:
 	@ ./bin/c/contra samples/input.txt
+run-c-win:
+	@ .\bin\c\contra samples\input.txt
 build-odin:
 	@ mkdir -p bin/odin
 	@ odin build ./src/odin -out:bin/odin/contra -collection:utils=./src/odin/utils
+build-odin-win:
+	@ odin build ./src/odin -out:bin/odin/contra.exe -collection:utils=./src/odin/utils
 run-odin:
 	@ ./bin/odin/contra samples/input.txt:20
 # Dry run C build
