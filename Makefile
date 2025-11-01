@@ -30,8 +30,7 @@ format:
 	@ zig fmt ./
 format-c:
 	@ echo "Formatting C files in src/.."
-	@ clang-format ./src/*.c -i --verbose
-	@ clang-format ./src/*.h -i --verbose
+	@ clang-format ./src/c/* -i --verbose
 	@ echo "Done"
 format-all:
 	@ make format format-c -s;
