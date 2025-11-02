@@ -2,12 +2,19 @@ package file
 
 import "core:os";
 import "core:fmt"
+import "core:sys/posix"
 
 // TODO: Show prompt depending on range situation
 read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 	handle, err := os.open(path)
 
 	if err == nil {
+		if os.is_dir(path) {
+			// TODO: If it's a directory, list all the entries in the dir
+			fmt.println(path, "is a directory")
+			return
+		}
+
 		i:i64 = 0
 		
 		file_size, y := os.file_size(handle)
