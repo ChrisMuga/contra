@@ -34,9 +34,14 @@ format-c:
 	@ echo "Done"
 format-all:
 	@ make format format-c -s;
-clean:
+clean-zig:
 	@ echo "Clearing caches"
 	@ rm -rf ~/.cache/zig .zig-cache zig-out
+	@ echo "Done ✅"
+clean-zig-win:
+	@ echo "Clearing caches"
+	@ del .zig-cache
+	@ del zig-out
 	@ echo "Done ✅"
 show-docs:
 	@ zig build-lib -femit-docs src/main.zig
