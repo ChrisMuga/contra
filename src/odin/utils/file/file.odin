@@ -11,7 +11,24 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 	if err == nil {
 		if os.is_dir(path) {
 			// TODO: If it's a directory, list all the entries in the dir
-			fmt.println(path, "is a directory")
+			fi, err := os.read_dir(handle, 0)
+
+			if err != nil {
+				fmt.println("Error introspecting dir:", err)
+				return
+			}
+
+			fmt.println(path, "is a directory containing:")
+			if len(fi) > 0 {
+				fmt.println("-----------")	
+			}
+			for f in fi {
+				fmt.printf("- %s\t%d bytes\t%s\n", f.name, f.size, f.is_dir ? "folder" : "file")
+			}
+
+			if len(fi) > 0 {
+				fmt.println("-----------")	
+			}
 			return
 		}
 
