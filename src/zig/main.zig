@@ -23,6 +23,7 @@ const fs = std.fs;
 ///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
 ///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
 
+// TODO: Migrate to zig version zig-0.16.0-dev.1225
 // TODO: Get started with tests
 // TODO: Implement man page for contra
 // TODO: Implement piping e.g. `git log | contra`
