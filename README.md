@@ -4,9 +4,9 @@
 
 ## Spec
 > Running on:
-    - `gcc/clang/g++`
-    - `odin dev-2025-10-nightly:81375e5`
-    - `zig 0.16.0-dev.732+2f3234c76`
+>   - `gcc/clang/g++`
+>   - `odin dev-2025-10-nightly:81375e5`
+>   - `zig 0.16.0-dev.732+2f3234c76`
 
 ## Running
 ```sh
