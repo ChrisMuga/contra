@@ -22,7 +22,7 @@ read_file :: proc(path: string, line_a: int = -1, line_b: int = -1) {
 			}
 			for f in fi {
 				ft := f.is_dir ? "folder" : "file"
-				fmt.printf("- %s (%s)\n\t- %d bytes\n", f.name, ft, f.size)
+				fmt.printf("> %s (%s)\n\t- %d bytes\n", f.name, ft, f.size)
 			}
 
 			if len(fi) > 0 {
