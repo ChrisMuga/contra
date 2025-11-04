@@ -3,7 +3,10 @@
 > `cat` but with line numbers, more like `bat` but not really :)
 
 ## Spec
-> Running on `zig 0.16.0-dev.732+2f3234c76`
+> Running on:
+    - `gcc/clang/g++`
+    - `odin dev-2025-10-nightly:81375e5`
+    - `zig 0.16.0-dev.732+2f3234c76`
 
 ## Running
 ```sh
