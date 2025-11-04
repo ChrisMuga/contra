@@ -35,17 +35,17 @@ pub fn handleFlag(flag: []const u8) void {
 
 pub fn handleFlagHelp() void {
     std.debug.print(
-        \\Usage: contra [file | args]
+        \\Usage: peep [file | args]
         \\-----
-        \\contra file.txt
-        \\contra file.txt 40 (prints L40 only)
-        \\contra file.txt 40:50 (prints L40-L50)
+        \\peep file.txt
+        \\peep file.txt 40 (prints L40 only)
+        \\peep file.txt 40:50 (prints L40-L50)
         \\-----
         \\ - Take a file as command line input and print its output/contents
         \\ - Input must be a file and not, say, a directory
         \\ - Show line numbers
-        \\ - Print specific line numbers if specified e.g contra test.txt 40 - prints L40 only
-        \\ - Print specific range of line numbers if specified e.g contra test.txt 40-50 - prints L40-L50
+        \\ - Print specific line numbers if specified e.g peep test.txt 40 - prints L40 only
+        \\ - Print specific range of line numbers if specified e.g peep test.txt 40-50 - prints L40-L50
         \\-----
         \\args:
         \\  --help                 shows help manual/documentation

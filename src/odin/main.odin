@@ -1,4 +1,4 @@
-package contra
+package peep
 
 import "core:fmt"
 import "core:strings"

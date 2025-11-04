@@ -8,8 +8,8 @@ const fs = std.fs;
 ///      - Take a file as command line input and print its output/contents
 ///      - Input must be a file and not, say, a directory
 ///      - Show line numbers
-///      - Print specific line numbers if specified e.g contra test.txt 40 - prints L40 only
-///      - Print specific range of line numbers if specified e.g contra test.txt 40-50 - prints L40-L50
+///      - Print specific line numbers if specified e.g peep test.txt 40 - prints L40 only
+///      - Print specific range of line numbers if specified e.g peep test.txt 40-50 - prints L40-L50
 /// ## Implementation:
 ///     - Use an arena allocator to create a buffer.
 ///     - Use that buffer to read the file specified.
@@ -19,23 +19,23 @@ const fs = std.fs;
 ///     - Deintialize the arena on function close
 ///     - Free the buffer memory on function close
 /// ### Examples:
-///     - ./zig-out/bin/contra example.txt // To print the whole file
-///     - ./zig-out/bin/contra example.txt 14 // To print line 14 only
-///     - ./zig-out/bin/contra example.txt 14:20 // To print lines 14 to 20
+///     - ./zig-out/bin/peep example.txt // To print the whole file
+///     - ./zig-out/bin/peep example.txt 14 // To print line 14 only
+///     - ./zig-out/bin/peep example.txt 14:20 // To print lines 14 to 20
 
 // TODO: Migrate to zig version zig-0.16.0-dev.1225
 // TODO: Get started with tests
-// TODO: Implement man page for contra
-// TODO: Implement piping e.g. `git log | contra`
+// TODO: Implement man page for peep
+// TODO: Implement piping e.g. `git log | peep`
 // TODO: Look into semver - semantic versioning
 // TODO: use @cImport to run C code in zig
-// TODO: contra test.txt:10
-// TODO: contra test.txt:10:20
+// TODO: peep test.txt:10
+// TODO: peep test.txt:10:20
 // TODO: Error handling in case:
-//  - contra test.txt e (if line specifier A is invalid)
-//  - contra test.txt 50:e (if line specifier B is invalid)
-//  - contra test.txt 50-60 ("-" is an invalid delimiter)
-//  - contra test.txt 50kk-60sk (either of the specifiers are not non-zero numbers)
+//  - peep test.txt e (if line specifier A is invalid)
+//  - peep test.txt 50:e (if line specifier B is invalid)
+//  - peep test.txt 50-60 ("-" is an invalid delimiter)
+//  - peep test.txt 50kk-60sk (either of the specifiers are not non-zero numbers)
 pub fn main() !void {
     // var args = std.process.args(); // Works on POSIX only, not windows
     //  - the implementation below should work for both.

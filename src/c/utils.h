@@ -102,15 +102,15 @@ void handle_flag(char *flag) {
   // TODO: I'd much rather avoid using strcmp here, are there any alternatives?
   // 	-> See - https://cplusplus.com/reference/cstring/strcmp/
   if (strcmp(flag, FLAG_HELP) == 0) {
-    echo("contra [file | arguments]");
+    echo("peep [file | arguments]");
     echo("---------");
     echo("Examples:");
     echo("---------");
-    echo("contra file.txt\t\t reads file");
-    echo("contra file.txt:40\t reads line 40 only");
-    echo("contra file.txt 40\t reads line 40 only");
-    echo("contra file.txt:40:50\t reads lines 40 to 50 of the file");
-    echo("contra file.txt 40:50\t reads lines 40 to 50 of the file");
+    echo("peep file.txt\t\t reads file");
+    echo("peep file.txt:40\t reads line 40 only");
+    echo("peep file.txt 40\t reads line 40 only");
+    echo("peep file.txt:40:50\t reads lines 40 to 50 of the file");
+    echo("peep file.txt 40:50\t reads lines 40 to 50 of the file");
     echo("---------");
     echo("Arguments:");
     echo("---------");
@@ -120,7 +120,7 @@ void handle_flag(char *flag) {
   } else if (strcmp(flag, FLAG_ZEN) == 0) {
     echo("And he who is not a bird should not camp above abysses.");
   } else if (strcmp(flag, FLAG_VERSION) == 0) {
-    echo("contra v0.0.1");
+    echo("peep v0.0.1");
     echo("* Built with C: https://cplusplus.com/reference/clibrary/");
   }
 }

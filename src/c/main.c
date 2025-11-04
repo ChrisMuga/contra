@@ -6,24 +6,24 @@
 // NOTE: This C program can automatically pipe to nvim for example. Investigate
 // 	- The zig program cannot do this out of the box
 
-// TODO: Implement piping e.g. `git log | contra`
+// TODO: Implement piping e.g. `git log | peep`
 // TODO: Explain line for line to understand what's going on here...
-// TODO: Show only line number, e.g `contra src/main.zig 14`
-// TODO: Range of line numbers, e.g `contra src/main.zig 14-18`
+// TODO: Show only line number, e.g `peep src/main.zig 14`
+// TODO: Range of line numbers, e.g `peep src/main.zig 14-18`
 // TODO: Script for debug and production/release builds
-// TODO: contra --help
+// TODO: peep --help
 // TODO: Error handling in case:
-//  - contra test.txt e (if line specifier A is invalid)
-//  - contra test.txt 50:e (if line specifier B is invalid)
-//  - contra test.txt 50-60 ("-" is an invalid delimiter)
-//  - contra test.txt 50kk-60sk (either of the specifiers are not non-zero
+//  - peep test.txt e (if line specifier A is invalid)
+//  - peep test.txt 50:e (if line specifier B is invalid)
+//  - peep test.txt 50-60 ("-" is an invalid delimiter)
+//  - peep test.txt 50kk-60sk (either of the specifiers are not non-zero
 //  numbers)
 
 // ## Examples:
-//     - ./bin/contra example.txt // To print the whole file
-//     - ./bin/contra example.txt 14 // To print line 14 only
-//     - ./bin/contra example.txt:14 // To print line 14 only
-//     - ./bin/contra example.txt:14:15 // To print line 14 only
+//     - ./bin/peep example.txt // To print the whole file
+//     - ./bin/peep example.txt 14 // To print line 14 only
+//     - ./bin/peep example.txt:14 // To print line 14 only
+//     - ./bin/peep example.txt:14:15 // To print line 14 only
 int main(int argc, char *argv[]) {
   if (argc <= 1) {
     handle_flag(FLAG_VERSION);

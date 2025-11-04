@@ -15,7 +15,7 @@ is_flag :: proc(s: string) -> bool {
 handle_flag :: proc(flag: string) {
 	switch flag {
 		case FLAG_VERSION:
-			fmt.println("contra v0.0.1")
+			fmt.println("peep v0.0.1")
 		case FLAG_HELP:
 			help()
 		case FLAG_ZEN:
@@ -30,13 +30,13 @@ help :: proc() {
 	// TODO: Fix this
 	fmt.println(
 	`
-contra [file | args]
+peep [file | args]
 ---------
 examples
 ---------
-contra file.txt
-contra file.txt 40 (prints L40 only)
-contra file.txt 40:50 (prints L40-L50)
+peep file.txt
+peep file.txt 40 (prints L40 only)
+peep file.txt 40:50 (prints L40-L50)
 ---------
 args
 ---------
