@@ -1,4 +1,4 @@
-# Contra
+# peep
 
 > `cat` but with line numbers, more like `bat` but not really :)
 
