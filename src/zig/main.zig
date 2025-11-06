@@ -113,7 +113,7 @@ pub fn main() !void {
                 // TODO: List root directory entries
                 print("{s} is directory\n", .{file_name});
                 // const dir =  try std.Io.Dir.it(cwd, io, file_name, .{.iterate = true});
-                // TODO: io.Dir.iterate not implemented, yet - revisit
+                // TODO: io.Dir.iterate is not implemented, yet - revisit
 
                 return;
             }
