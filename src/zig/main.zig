@@ -109,7 +109,7 @@ pub fn main() !void {
         if (stat.kind != std.fs.File.Kind.file) {
             if (stat.kind == std.fs.File.Kind.directory) {
                 print("{s} is directory\n", .{file_name});
-                // TODO: List root directory entries 
+                // TODO: List root directory entries
                 return;
             }
 
