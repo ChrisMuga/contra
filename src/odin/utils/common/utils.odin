@@ -48,5 +48,5 @@ args
 }
 
 zen :: proc() {
-	fmt.println("He will win who, prepared himself, waits to take the enemy unprepared.")
+	fmt.println("- He will win who, prepared himself, waits to take the enemy unprepared.")
 }
