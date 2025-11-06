@@ -103,13 +103,18 @@ pub fn main() !void {
         print("Showing {s}:{d}\n", .{ file_name, sln_a.? });
     }
 
-    const cwd = fs.cwd();
-    if (cwd.openFile(file_name, .{})) |file| {
-        const stat = try file.stat();
+    var threaded: std.Io.Threaded = .init_single_threaded;
+    const io = threaded.io();
+    const cwd = std.Io.Dir.cwd();
+    if (cwd.openFile(io, file_name, .{})) |file| {
+        const stat = try file.stat(io);
         if (stat.kind != std.fs.File.Kind.file) {
             if (stat.kind == std.fs.File.Kind.directory) {
-                print("{s} is directory\n", .{file_name});
                 // TODO: List root directory entries
+                print("{s} is directory\n", .{file_name});
+                // const dir =  try std.Io.Dir.it(cwd, io, file_name, .{.iterate = true});
+                // TODO: io.Dir.iterate not implemented, yet - revisit
+
                 return;
             }
 
@@ -131,8 +136,6 @@ pub fn main() !void {
         //      - See: https://github.com/ziglang/zig/pull/25592
         //      - See: https://www.reddit.com/r/Zig/comments/1oo8u5z/can_someone_explain_to_me_the_new_stdio_interface/
         //      - I don't understand why we had to add the io
-        var threaded: std.Io.Threaded = .init_single_threaded;
-        const io = threaded.io();
         var reader = file.reader(io, buffer);
 
         // TODO: There may be a better implementation here...
