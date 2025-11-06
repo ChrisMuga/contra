@@ -121,7 +121,12 @@ pub fn main() !void {
         const buffer = try allocator.alloc(u8, file_size);
         defer allocator.free(buffer);
 
-        var reader = file.reader(buffer);
+        // TODO: I don't understand what's going on here, we should investigate.
+        //      - See: https://github.com/ziglang/zig/pull/25592
+        //      - I don't understand why we had to add the io
+        var threaded: std.Io.Threaded = .init_single_threaded;
+        const io = threaded.io();
+        var reader = file.reader(io, buffer);
 
         // TODO: There may be a better implementation here...
         if (reader.interface.readSliceAll(buffer)) |_| {} else |err| {
