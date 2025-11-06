@@ -107,6 +107,12 @@ pub fn main() !void {
     if (cwd.openFile(file_name, .{})) |file| {
         const stat = try file.stat();
         if (stat.kind != std.fs.File.Kind.file) {
+            if (stat.kind == std.fs.File.Kind.directory) {
+                print("{s} is directory\n", .{file_name});
+                // TODO: List root directory entries 
+                return;
+            }
+
             print("Error: {s} is not a file\n", .{file_name});
             return;
         }
@@ -175,6 +181,6 @@ pub fn main() !void {
             }
         }
     } else |_| {
-        utils.echo("Error: Cannot locate/open file");
+        print("Error: Cannot locate/open file ({s})\n", .{file_name});
     }
 }
