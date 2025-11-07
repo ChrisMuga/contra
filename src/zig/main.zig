@@ -111,7 +111,7 @@ pub fn main() !void {
         if (stat.kind != std.fs.File.Kind.file) {
             if (stat.kind == std.fs.File.Kind.directory) {
                 // TODO: List root directory entries
-                print("{s} is directory\n", .{file_name});
+                print("{s} is a directory\n", .{file_name});
                 // const dir =  try std.Io.Dir.it(cwd, io, file_name, .{.iterate = true});
                 // TODO: io.Dir.iterate is not implemented, yet - revisit
 
