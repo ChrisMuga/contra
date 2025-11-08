@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "utils.h"
+#include "file.h"
 
 // NOTE: This C program can automatically pipe to nvim for example. Investigate
 // 	- The zig program cannot do this out of the box
@@ -42,6 +43,8 @@ int main(int argc, char *argv[]) {
     handle_flag(file_name);
     return 0;
   }
+
+  printf("is_file: %d\n", is_file(file_name));
 
   if (has_char(file_name, ':')) {
     char **split_vars = split(file_name, ':');
@@ -86,7 +89,7 @@ int main(int argc, char *argv[]) {
   long size = ftell(file);
 
   if (sln_a == -1) {
-    printf("File size: %ld\n", size);
+    printf("File size: %ld bytes\n", size);
   }
 
   char *buffer;
@@ -101,6 +104,7 @@ int main(int argc, char *argv[]) {
     printf("Printing L%d-L%d of %s\n", sln_a, sln_b, file_name);
     echo("--------------------");
   }
+
   while (fgets(buffer, size + 1, file)) {
     if (sln_a == -1) {
       printf("%d: \t %s", i, buffer);
