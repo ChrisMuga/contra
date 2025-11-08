@@ -11,6 +11,4 @@ int is_dir(char *path) {
 
 // TODO: Implement read_dir:
 // - list the root entries of a directory
-void read_dir(char* path) {
-
-}
+void read_dir(char *path) { printf("Reading %s\n", path); }
