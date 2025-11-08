@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     return 0;
   }
 
-  printf("is_file: %d\n", is_file(file_name));
+  printf("is_dir: %d\n", is_dir(file_name));
 
   if (has_char(file_name, ':')) {
     char **split_vars = split(file_name, ':');

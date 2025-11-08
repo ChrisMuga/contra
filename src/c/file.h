@@ -2,7 +2,7 @@
 
 #include <sys/stat.h>
 
-int is_file(char* path) {
+int is_dir(char* path) {
 	struct stat buff;
 
 	stat(path, &buff);
