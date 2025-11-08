@@ -1,4 +1,3 @@
-// TODO use <sys/stat.h> to read and infer if file is regular file or dir
 
 #include <sys/stat.h>
 
@@ -8,4 +7,10 @@ int is_dir(char *path) {
   stat(path, &buff);
 
   return S_ISDIR(buff.st_mode);
+}
+
+// TODO: Implement read_dir:
+// - list the root entries of a directory
+void read_dir(char* path) {
+
 }

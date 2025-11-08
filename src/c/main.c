@@ -46,6 +46,7 @@ int main(int argc, char *argv[]) {
 
   if (is_dir(file_name)) {
     printf("%s if a directory\n", file_name);
+    read_dir(file_name);
   }
 
   if (has_char(file_name, ':')) {
