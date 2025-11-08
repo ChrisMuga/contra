@@ -2,10 +2,10 @@
 
 #include <sys/stat.h>
 
-int is_dir(char* path) {
-	struct stat buff;
+int is_dir(char *path) {
+  struct stat buff;
 
-	stat(path, &buff);
+  stat(path, &buff);
 
-	return S_ISDIR(buff.st_mode);
+  return S_ISDIR(buff.st_mode);
 }

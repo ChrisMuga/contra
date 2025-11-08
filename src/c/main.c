@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "utils.h"
 #include "file.h"
+#include "utils.h"
 
 // NOTE: This C program can automatically pipe to nvim for example. Investigate
 // 	- The zig program cannot do this out of the box
@@ -44,7 +44,9 @@ int main(int argc, char *argv[]) {
     return 0;
   }
 
-  printf("is_dir: %d\n", is_dir(file_name));
+  if (is_dir(file_name)) {
+    printf("%s if a directory\n", file_name);
+  }
 
   if (has_char(file_name, ':')) {
     char **split_vars = split(file_name, ':');
