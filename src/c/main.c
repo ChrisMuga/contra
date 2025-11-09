@@ -44,9 +44,11 @@ int main(int argc, char *argv[]) {
     return 0;
   }
 
-  if (is_dir(file_name)) {
+  int is_folder = is_dir(file_name);
+
+  if (is_folder) {
     printf("%s is a directory\n", file_name);
-    read_dir(file_name);
+    list_dir(file_name);
   }
 
   if (has_char(file_name, ':')) {
@@ -91,7 +93,7 @@ int main(int argc, char *argv[]) {
   fseek(file, 0L, SEEK_END);
   long size = ftell(file);
 
-  if (sln_a == -1) {
+  if (sln_a == -1 && !is_folder) {
     printf("File size: %ld bytes\n", size);
   }
 
