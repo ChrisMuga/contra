@@ -16,14 +16,14 @@ void list_dir(char *path) {
   int i = 0;
 
   while (dir_ptr) {
-    struct dirent *dp = readdir(dir_ptr);
+    struct dirent *ent_ptr = readdir(dir_ptr);
 
-    if (dp == NULL) {
+    if (ent_ptr == NULL) {
       return;
     }
 
     if (i > 1) {
-      printf("%d\t %s\n", i - 1, dp->d_name);
+      printf("%d\t %s\n", i - 1, ent_ptr->d_name);
     }
 
     i += 1;
